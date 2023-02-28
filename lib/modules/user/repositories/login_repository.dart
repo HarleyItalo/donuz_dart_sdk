@@ -1,7 +1,7 @@
-import 'package:donuz_dart_sdk/modules/login/constants/login_constants.dart';
+import 'package:donuz_dart_sdk/modules/user/constants/login_constants.dart';
 
 import '../../common/common_module.dart';
-import '../login_module.dart';
+import '../user_module.dart';
 
 abstract class LoginRepository {
   Future<String?> getLoggedUserToken();

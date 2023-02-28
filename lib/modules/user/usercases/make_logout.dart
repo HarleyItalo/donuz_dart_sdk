@@ -1,4 +1,4 @@
-import '../login_module.dart';
+import '../user_module.dart';
 
 abstract class MakeLogout {
   Future<bool> call();
