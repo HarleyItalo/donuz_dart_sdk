@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:donuz_dart_sdk/modules/common/services/storage_service.dart';
-import 'package:donuz_dart_sdk/modules/user/constants/login_constants.dart';
-import 'package:donuz_dart_sdk/modules/user/repositories/login_repository.dart';
+import 'package:donuz_dart_sdk/modules/common/common_module.dart';
+import 'package:donuz_dart_sdk/modules/user/user_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
