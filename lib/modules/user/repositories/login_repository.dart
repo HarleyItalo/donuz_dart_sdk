@@ -1,5 +1,3 @@
-import 'package:donuz_dart_sdk/modules/user/constants/login_constants.dart';
-
 import '../../common/common_module.dart';
 import '../user_module.dart';
 

@@ -14,17 +14,20 @@ class HttpService {
     String? tokenCliente,
     Map<String, String>? headers,
   }) async {
-    final response = await _client.get(
-      Uri.parse(useDonuzToken ? config.donuzApi + url : url),
-      headers: getHeaders(
-        useDonuzToken: useDonuzToken,
-        appId: appId,
-        tokenCliente: tokenCliente,
-        headers: headers,
-      ),
-    );
-
-    return jsonDecode(response.body);
+    try {
+      final response = await _client.get(
+        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        headers: getHeaders(
+          useDonuzToken: useDonuzToken,
+          appId: appId,
+          tokenCliente: tokenCliente,
+          headers: headers,
+        ),
+      );
+      return jsonDecode(response.body);
+    } on Exception {
+      return <String, dynamic>{};
+    }
   }
 
   Future<Map<String, dynamic>> post(
@@ -35,18 +38,22 @@ class HttpService {
     String? tokenCliente,
     Map<String, String>? headers,
   }) async {
-    body = removeNullValues(body);
-    final response = await _client.post(
-      Uri.parse(useDonuzToken ? config.donuzApi + url : url),
-      body: jsonEncode(body),
-      headers: getHeaders(
-        useDonuzToken: useDonuzToken,
-        appId: appId,
-        tokenCliente: tokenCliente,
-        headers: headers,
-      ),
-    );
-    return jsonDecode(response.body);
+    try {
+      body = removeNullValues(body);
+      final response = await _client.post(
+        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        body: jsonEncode(body),
+        headers: getHeaders(
+          useDonuzToken: useDonuzToken,
+          appId: appId,
+          tokenCliente: tokenCliente,
+          headers: headers,
+        ),
+      );
+      return jsonDecode(response.body);
+    } on Exception {
+      return <String, dynamic>{};
+    }
   }
 
   Future<Map<String, dynamic>> put(
@@ -57,18 +64,22 @@ class HttpService {
     String? tokenCliente,
     Map<String, String>? headers,
   }) async {
-    body = removeNullValues(body);
-    final response = await _client.put(
-      Uri.parse(useDonuzToken ? config.donuzApi + url : url),
-      body: jsonEncode(body),
-      headers: getHeaders(
-        useDonuzToken: useDonuzToken,
-        appId: appId,
-        tokenCliente: tokenCliente,
-        headers: headers,
-      ),
-    );
-    return jsonDecode(response.body);
+    try {
+      body = removeNullValues(body);
+      final response = await _client.put(
+        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        body: jsonEncode(body),
+        headers: getHeaders(
+          useDonuzToken: useDonuzToken,
+          appId: appId,
+          tokenCliente: tokenCliente,
+          headers: headers,
+        ),
+      );
+      return jsonDecode(response.body);
+    } on Exception {
+      return <String, dynamic>{};
+    }
   }
 
   Map<String, String> getHeaders({

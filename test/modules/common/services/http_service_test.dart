@@ -24,6 +24,14 @@ void main() {
           200));
       var response = await httpService.get("");
       expect(response, isNotNull);
+      expect(response['status'], 200);
+    });
+    test("Deve falhar a fazer um get", () async {
+      when(
+        () => clientMock.get(any(), headers: httpService.getHeaders()),
+      ).thenThrow(Exception());
+      var response = await httpService.get("");
+      expect(response, isEmpty);
     });
     test("Deve realizar um post", () async {
       when(
@@ -35,17 +43,27 @@ void main() {
       var response = await httpService.post("", {});
       expect(response, isNotNull);
     });
+    test("Deve falhar ao realizar um post", () async {
+      when(
+        () => clientMock.post(any(),
+            body: '{}', headers: httpService.getHeaders()),
+      ).thenThrow(Exception());
+      var response = await httpService.post("", {});
+      expect(response, isEmpty);
+    });
     test("Remove os valores nulos", () {
       var response = httpService.removeNullValues({"test": null});
-      expect(response.isEmpty, true);
+      expect(response, isEmpty);
     });
 
     test("Gera um header com todos os valores", () {
-      httpService.getHeaders(
+      var response = httpService.getHeaders(
           useDonuzToken: false,
           appId: "2234",
           tokenCliente: "xpto",
           headers: <String, String>{"chinelo": "canela"});
+      expect(response["estabelecimento"], '2234');
+      expect(response["chinelo"], "canela");
     });
 
     test("Deve realizar um put", () async {
@@ -57,6 +75,14 @@ void main() {
           200));
       var response = await httpService.put("", {});
       expect(response, isNotNull);
+    });
+    test("Deve falhar realizar um put", () async {
+      when(
+        () => clientMock.put(any(),
+            body: '{}', headers: httpService.getHeaders()),
+      ).thenThrow(Exception());
+      var response = await httpService.put("", {});
+      expect(response, isEmpty);
     });
   });
 }
