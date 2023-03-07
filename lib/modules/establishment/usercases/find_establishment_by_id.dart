@@ -26,7 +26,7 @@ class FindEstablishmentByIdImpl extends FindEstablishmentById {
   }
 
   @override
-  Future<String?> currentId() {
-    return _storageService.getString("currentId");
+  Future<String?> currentId() async {
+    return await _storageService.getString("currentId");
   }
 }
