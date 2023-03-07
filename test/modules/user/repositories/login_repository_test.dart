@@ -66,5 +66,18 @@ void main() async {
       var response = await loginRepository.getLoggedUserToken();
       expect(response, isNotNull);
     });
+    test("Deve enviar a requisicao de redefinicao de senha", () async {
+      when(() => httpService.post(
+          "clients/forgotPassword",
+          {
+            "email": "teste@teste.com",
+          },
+          appId: '2234')).thenAnswer((_) async {
+        return jsonDecode(loginSuccessJson);
+      });
+      var response = await loginRepository.rememberPassword(
+          email: "teste@teste.com", appId: "2234");
+      expect(response, isNotNull);
+    });
   });
 }
