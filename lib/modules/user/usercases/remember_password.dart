@@ -2,7 +2,7 @@ import '../../establishment/establishment_module.dart';
 import '../user_module.dart';
 
 abstract class RememberPassword {
-  Future<String?> call(String email);
+  Future<String?> call({required String email});
 }
 
 class RememberPasswordImpl implements RememberPassword {
@@ -11,7 +11,7 @@ class RememberPasswordImpl implements RememberPassword {
   RememberPasswordImpl(this._repository, this._establishmentById);
 
   @override
-  Future<String?> call(String email) async {
+  Future<String?> call({required String email}) async {
     if (email.isEmpty) {
       return null;
     }

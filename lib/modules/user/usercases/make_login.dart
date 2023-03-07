@@ -2,10 +2,10 @@ import '../../establishment/establishment_module.dart';
 import '../user_module.dart';
 
 abstract class MakeLogin {
-  Future<LoginModel?> call(
-      {required String username,
-      required String password,
-      required String appId});
+  Future<LoginModel?> call({
+    required String username,
+    required String password,
+  });
 }
 
 class MakeLoginImpl extends MakeLogin {
@@ -14,10 +14,10 @@ class MakeLoginImpl extends MakeLogin {
   MakeLoginImpl(this._repository, this._establishmentById);
 
   @override
-  Future<LoginModel?> call(
-      {required String username,
-      required String password,
-      required String appId}) async {
+  Future<LoginModel?> call({
+    required String username,
+    required String password,
+  }) async {
     if (username.isEmpty || password.isEmpty) {
       return null;
     }

@@ -4,6 +4,7 @@ class LoginModel {
   String? token;
   int? cliente;
   List<int>? ids;
+  LoginModel({this.status, this.token, this.mensagem});
   LoginModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     mensagem = json['mensagem'];
