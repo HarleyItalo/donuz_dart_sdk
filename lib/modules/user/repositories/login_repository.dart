@@ -62,10 +62,7 @@ class LoginRepositoryImpl extends LoginRepository {
     var result =
         await httpService.post("clients/forgotPassword", body, appId: appId);
     var response = BaseResponseDonuzModel.fromJson(result);
-    if (response.status == 200) {
-      return response.mensagem;
-    }
-    return null;
+    return response.mensagem;
   }
 
   @override

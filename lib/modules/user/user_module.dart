@@ -2,8 +2,10 @@
 export 'constants/login_constants.dart';
 //models
 export 'models/login_model.dart';
+export 'models/user_model.dart';
 //repositories
 export 'repositories/login_repository.dart';
+export 'repositories/user_repository.dart';
 //usercases
 export 'usercases/get_logged_user_token.dart';
 export 'usercases/make_login.dart';
