@@ -84,5 +84,23 @@ void main() {
       var response = await httpService.put("", {});
       expect(response, isEmpty);
     });
+
+    test("Deve realizar um delete", () async {
+      when(
+        () => clientMock.delete(any(), headers: httpService.getHeaders()),
+      ).thenAnswer((_) async => http.Response(
+          '{"status":200, "mensagem":"Requisicao finalizada com sucesso"}',
+          200));
+      var response = await httpService.delete("");
+      expect(response, isNotNull);
+      expect(response['status'], 200);
+    });
+    test("Deve falhar a fazer um get", () async {
+      when(
+        () => clientMock.delete(any(), headers: httpService.getHeaders()),
+      ).thenThrow(Exception());
+      var response = await httpService.delete("");
+      expect(response, isEmpty);
+    });
   });
 }

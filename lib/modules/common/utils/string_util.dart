@@ -5,7 +5,7 @@ class StringUtil {
     return value != null ? value.replaceAll(RegExp(r'[^\d]'), '') : '';
   }
 
-  static String formatData(value, {format = "dd/MM/yyyy"}) {
+  static String formatData(dynamic value, {format = "dd/MM/yyyy"}) {
     var date = DateTime.tryParse(value);
     if (date != null) {
       var formatter = DateFormat(format);

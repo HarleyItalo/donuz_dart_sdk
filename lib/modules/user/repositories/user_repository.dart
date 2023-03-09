@@ -15,6 +15,11 @@ abstract class UserRepository {
     String? tokenClient,
     required String appId,
   });
+  Future<BaseResponseDonuzModel> deleteUser({
+    required String userId,
+    required String appId,
+    required String token,
+  });
 }
 
 class UserRepositoryImpl extends UserRepository {
@@ -57,5 +62,19 @@ class UserRepositoryImpl extends UserRepository {
       tokenCliente: tokenClient,
     );
     return BaseResponseDonuzModel.fromJson(result);
+  }
+
+  @override
+  Future<BaseResponseDonuzModel> deleteUser({
+    required String userId,
+    required String appId,
+    required String token,
+  }) async {
+    var json = await httpService.delete(
+      "client/$userId",
+      tokenCliente: token,
+      appId: appId,
+    );
+    return BaseResponseDonuzModel.fromJson(json);
   }
 }

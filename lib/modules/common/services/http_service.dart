@@ -82,6 +82,29 @@ class HttpService {
     }
   }
 
+  Future<Map<String, dynamic>> delete(
+    String url, {
+    bool useDonuzToken = true,
+    String? appId,
+    String? tokenCliente,
+    Map<String, String>? headers,
+  }) async {
+    try {
+      final response = await _client.delete(
+        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        headers: getHeaders(
+          useDonuzToken: useDonuzToken,
+          appId: appId,
+          tokenCliente: tokenCliente,
+          headers: headers,
+        ),
+      );
+      return jsonDecode(response.body);
+    } on Exception {
+      return <String, dynamic>{};
+    }
+  }
+
   Map<String, String> getHeaders({
     bool useDonuzToken = true,
     String? appId,

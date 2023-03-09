@@ -11,3 +11,6 @@ export 'usercases/get_logged_user_token.dart';
 export 'usercases/make_login.dart';
 export 'usercases/make_logout.dart';
 export 'usercases/remember_password.dart';
+export 'usercases/get_user.dart';
+export 'usercases/register_user.dart';
+export 'usercases/update_user.dart';
