@@ -24,7 +24,10 @@ abstract class UserRepository {
 
 class UserRepositoryImpl extends UserRepository {
   HttpService httpService;
-  UserRepositoryImpl(this.httpService);
+
+  UserRepositoryImpl(
+    this.httpService,
+  );
 
   @override
   Future<User?> getUser({String? tokenClient, required String appId}) async {

@@ -3,22 +3,12 @@ class UserModel {
   dynamic message;
   User? client;
 
-  UserModel({
-    client,
-  });
-
   UserModel.fromJson(
     Map<String, dynamic> json,
   ) {
     status = json['status'];
     message = json['message'];
     client = json['cliente'] != null ? User.fromJson(json['cliente']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['client'] = client?.toJson();
-    return data;
   }
 }
 
@@ -54,7 +44,7 @@ class User {
   String? senha;
   String? confirmacaoSenha;
   Categoria? categoria;
-  CamposAdicionais? camposAdicionais = CamposAdicionais();
+  CamposAdicionais? camposAdicionais;
 
   User(
       {idCliente,
@@ -121,14 +111,10 @@ class User {
     categoria = json['categoria'] != null
         ? Categoria.fromJson(json['categoria'])
         : null;
-    try {
-      var camposAd = json['camposAdicionais'] as Map<dynamic, dynamic>;
-      camposAdicionais = json['camposAdicionais'] != null && camposAd.isNotEmpty
-          ? CamposAdicionais.fromJson(json['camposAdicionais'])
-          : CamposAdicionais();
-    } catch (ex) {
-      camposAdicionais = CamposAdicionais();
-    }
+    var camposAd = json['camposAdicionais'] as Map<dynamic, dynamic>;
+    camposAdicionais = json['camposAdicionais'] != null && camposAd.isNotEmpty
+        ? CamposAdicionais.fromJson(json['camposAdicionais'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -175,20 +161,10 @@ class Categoria {
   dynamic multiplicador;
   int? idClienteCategoria;
 
-  Categoria({titulo, multiplicador, idClienteCategoria});
-
   Categoria.fromJson(Map<String, dynamic> json) {
     titulo = json['titulo'];
     multiplicador = json['multiplicador'];
     idClienteCategoria = json['id_cliente_categoria'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['titulo'] = titulo;
-    data['multiplicador'] = multiplicador;
-    data['id_cliente_categoria'] = idClienteCategoria;
-    return data;
   }
 }
 
@@ -197,7 +173,6 @@ class CamposAdicionais {
   Map<dynamic, dynamic> select = <dynamic, dynamic>{};
   Map<dynamic, dynamic> checkbox = <dynamic, dynamic>{};
   Map<dynamic, dynamic> data = <dynamic, dynamic>{};
-  CamposAdicionais({texto, select, checkbox, data});
 
   CamposAdicionais.fromJson(Map<String, dynamic> json) {
     if (json['text'] != null) {
@@ -214,7 +189,7 @@ class CamposAdicionais {
     }
   }
 
-  Map<String, dynamic>? toJson() {
+  Map<String, dynamic> toJson() {
     Map<String, dynamic> json = <String, dynamic>{};
     if (texto.isNotEmpty) {
       json['text'] = texto;
@@ -228,6 +203,6 @@ class CamposAdicionais {
     if (data.isNotEmpty) {
       json['data'] = data;
     }
-    return json.isNotEmpty ? json : null;
+    return json;
   }
 }

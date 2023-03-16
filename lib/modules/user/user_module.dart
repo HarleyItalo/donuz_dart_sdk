@@ -14,3 +14,4 @@ export 'usercases/remember_password.dart';
 export 'usercases/get_user.dart';
 export 'usercases/register_user.dart';
 export 'usercases/update_user.dart';
+export 'usercases/delete_user.dart';
