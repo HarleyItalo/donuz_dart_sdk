@@ -10,7 +10,7 @@ import '../../../mocks/user/repositories/user_repository_mock.dart';
 import '../../../mocks/user/user_cases/make_login_mock.dart';
 
 void main() {
-  group("MakeLogout", () {
+  group("RegisterUser", () {
     var makeLoginMock = MakeLoginMock();
     var findEstablishmentByIdMock = FindEstablismentByIdMock();
     var userRepositoryMock = UserRepositoryMock();
@@ -20,7 +20,7 @@ void main() {
       findEstablishmentByIdMock,
       makeLoginMock,
     );
-    test("Deve fazer logout", () async {
+    test("Deve registrar um usuario", () async {
       var userData = UserModel.fromJson(jsonDecode(userDataJson));
       userData.client?.senha = "123";
 

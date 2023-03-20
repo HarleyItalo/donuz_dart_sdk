@@ -15,7 +15,8 @@ class StringUtil {
   }
 
   static double parseStringToDouble(String? value) {
-    if (value == null || value.isEmpty) {
+    value = onlyNumbers(value);
+    if (value.isEmpty) {
       return 0.0;
     }
     return double.parse(

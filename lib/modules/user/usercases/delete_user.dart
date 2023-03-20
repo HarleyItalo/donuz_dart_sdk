@@ -33,6 +33,6 @@ class DeleteUserImpl extends DeleteUser {
           mensagem: "Você não está logado, faça o login e tente novamente.");
     }
     return await _repository.deleteUser(
-        appId: appId, token: token, userId: user.idCliente);
+        appId: appId, token: token, userId: user.idCliente.toString());
   }
 }
