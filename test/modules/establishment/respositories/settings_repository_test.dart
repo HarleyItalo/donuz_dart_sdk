@@ -22,5 +22,14 @@ void main() {
       var response = await settingsRepository.findSetting('2234', false);
       expect(response, isNotNull);
     });
+    test("Deve buscar as configuracoes", () async {
+      when(
+        () => httpServiceMock.get("settings/meus-dados", appId: '2234'),
+      ).thenAnswer(
+        (_) async => jsonDecode(settingsJson),
+      );
+      var response = await settingsRepository.findSetting('2234', true);
+      expect(response, isNotNull);
+    });
   });
 }
