@@ -23,7 +23,6 @@ class GetUserImpl extends GetUser {
     for (var element in response) {
       if (element == null) return null;
     }
-    return _repository.getUser(
-        tokenClient: response.last, appId: response.first!);
+    return _repository.getUser(userInfo: response.last, appId: response.first!);
   }
 }

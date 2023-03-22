@@ -4,6 +4,7 @@ import 'package:donuz_dart_sdk/modules/user/user_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../json/default_response_json.dart';
 import '../../../json/user/user_data_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
@@ -14,8 +15,8 @@ void main() async {
     test("deve buscar as informacoes do usuario", () async {
       when(() => httpService.get("client/12345678909", appId: "2234"))
           .thenAnswer((invocation) async => jsonDecode(userDataJson));
-      var response = await userRepository.getUser(
-          appId: "2234", tokenClient: '12345678909');
+      var response =
+          await userRepository.getUser(appId: "2234", userInfo: '12345678909');
 
       expect(response, isNotNull);
     });
@@ -55,6 +56,21 @@ void main() async {
           .thenAnswer((invocation) async => jsonDecode(userDataJson));
       var response = await userRepository.deleteUser(
           userId: "1234", appId: "2234", token: '123');
+      expect(response, isNotNull);
+    });
+
+    test("deve enviar um sms para um usuario", () async {
+      when(
+        () => httpService.post(
+          "sms/sendToAnonymous",
+          {
+            "celular": "00000000000",
+          },
+          appId: "2234",
+        ),
+      ).thenAnswer((invocation) async => jsonDecode(defaultResponseJson));
+      var response =
+          await userRepository.sendSmsBeforeRegistration("00000000000", "2234");
       expect(response, isNotNull);
     });
   });

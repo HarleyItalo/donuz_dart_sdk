@@ -29,7 +29,7 @@ void main() {
         (_) async => "123",
       );
       when(
-        () => userRepositoryMock.getUser(appId: "2234", tokenClient: '123'),
+        () => userRepositoryMock.getUser(appId: "2234", userInfo: '123'),
       ).thenAnswer((invocation) async =>
           UserModel.fromJson(jsonDecode(userDataJson)).client);
       var response = await getUser();

@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/harleyitalo/fvm/caches/3.7.3"
+export "FLUTTER_ROOT=/Users/harleyitalo/fvm/caches/3.7.7"
 export "FLUTTER_APPLICATION_PATH=/Users/harleyitalo/src/donuz_dart_sdk"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"

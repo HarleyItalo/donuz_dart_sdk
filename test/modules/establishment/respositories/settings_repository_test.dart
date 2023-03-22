@@ -1,10 +1,7 @@
 import 'dart:convert';
-
-import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-
 import '../../../json/establisment/settings_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 

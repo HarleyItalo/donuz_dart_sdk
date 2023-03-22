@@ -3,7 +3,7 @@ import '../user_module.dart';
 
 abstract class UserRepository {
   Future<User?> getUser({
-    String? tokenClient,
+    String? userInfo,
     required String appId,
   });
   Future<BaseResponseDonuzModel> registerUser({
@@ -20,6 +20,7 @@ abstract class UserRepository {
     required String appId,
     required String token,
   });
+  Future<bool> sendSmsBeforeRegistration(String phoneNumber, String appId);
 }
 
 class UserRepositoryImpl extends UserRepository {
@@ -30,11 +31,11 @@ class UserRepositoryImpl extends UserRepository {
   );
 
   @override
-  Future<User?> getUser({String? tokenClient, required String appId}) async {
-    if (tokenClient == null) {
+  Future<User?> getUser({String? userInfo, required String appId}) async {
+    if (userInfo == null) {
       return null;
     }
-    var json = await httpService.get("client/$tokenClient", appId: appId);
+    var json = await httpService.get("client/$userInfo", appId: appId);
     var user = UserModel.fromJson(json);
     return user.client;
   }
@@ -79,5 +80,18 @@ class UserRepositoryImpl extends UserRepository {
       appId: appId,
     );
     return BaseResponseDonuzModel.fromJson(json);
+  }
+
+  @override
+  Future<bool> sendSmsBeforeRegistration(
+      String phoneNumber, String appId) async {
+    final result = await httpService.post(
+        'sms/sendToAnonymous',
+        {
+          "celular": phoneNumber,
+        },
+        appId: appId);
+    final response = BaseResponseDonuzModel.fromJson(result);
+    return response.status == 200;
   }
 }
