@@ -20,17 +20,20 @@ class UpdateUserImpl extends UpdateUser {
 
   @override
   Future<BaseResponseDonuzModel> call({required User user}) async {
-    var appId = await _findEstablishmentById.currentId();
-    if (appId == null) {
-      return BaseResponseDonuzModel(
-          status: 500,
-          mensagem: "Não foi possivel determinar seu estabelecimento");
+    var response = await Future.wait(
+        [_findEstablishmentById.currentId(), _getLoggedUserToken()]);
+
+    for (var element in response) {
+      if (element == null) {
+        return BaseResponseDonuzModel(
+            status: 500, mensagem: "Não foi possivel realizar sua requisição");
+      }
     }
-    var token = await _getLoggedUserToken();
+
     return await _repository.updateUser(
       user: user,
-      appId: appId,
-      tokenClient: token,
+      appId: response.first!,
+      tokenClient: response.last,
     );
   }
 }

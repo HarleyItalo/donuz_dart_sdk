@@ -18,11 +18,12 @@ class GetUserImpl extends GetUser {
 
   @override
   Future<User?> call() async {
-    var appId = await _findEstablishmentById.currentId();
-    if (appId == null) {
-      return null;
+    var response = await Future.wait(
+        [_findEstablishmentById.currentId(), _getLoggedUserToken()]);
+    for (var element in response) {
+      if (element == null) return null;
     }
-    var token = await _getLoggedUserToken();
-    return _repository.getUser(tokenClient: token, appId: appId);
+    return _repository.getUser(
+        tokenClient: response.last, appId: response.first!);
   }
 }
