@@ -20,7 +20,10 @@ abstract class UserRepository {
     required String appId,
     required String token,
   });
-  Future<bool> sendSmsBeforeRegistration(String phoneNumber, String appId);
+  Future<bool> sendSmsBeforeRegistration({
+    required String phoneNumber,
+    required String appId,
+  });
 }
 
 class UserRepositoryImpl extends UserRepository {
@@ -83,8 +86,10 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<bool> sendSmsBeforeRegistration(
-      String phoneNumber, String appId) async {
+  Future<bool> sendSmsBeforeRegistration({
+    required String phoneNumber,
+    required String appId,
+  }) async {
     final result = await httpService.post(
         'sms/sendToAnonymous',
         {

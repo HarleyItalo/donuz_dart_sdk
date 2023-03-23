@@ -15,8 +15,10 @@ void main() async {
     test("deve buscar as informacoes do usuario", () async {
       when(() => httpService.get("client/12345678909", appId: "2234"))
           .thenAnswer((invocation) async => jsonDecode(userDataJson));
-      var response =
-          await userRepository.getUser(appId: "2234", userInfo: '12345678909');
+      var response = await userRepository.getUser(
+        appId: "2234",
+        userInfo: '12345678909',
+      );
 
       expect(response, isNotNull);
     });
@@ -55,7 +57,10 @@ void main() async {
               appId: "2234", tokenCliente: '123'))
           .thenAnswer((invocation) async => jsonDecode(userDataJson));
       var response = await userRepository.deleteUser(
-          userId: "1234", appId: "2234", token: '123');
+        userId: "1234",
+        appId: "2234",
+        token: '123',
+      );
       expect(response, isNotNull);
     });
 
@@ -69,8 +74,10 @@ void main() async {
           appId: "2234",
         ),
       ).thenAnswer((invocation) async => jsonDecode(defaultResponseJson));
-      var response =
-          await userRepository.sendSmsBeforeRegistration("00000000000", "2234");
+      var response = await userRepository.sendSmsBeforeRegistration(
+        phoneNumber: "00000000000",
+        appId: "2234",
+      );
       expect(response, isNotNull);
     });
   });
