@@ -18,10 +18,14 @@ class GetAvaliableVouchersImpl extends GetAvaliableVouchers {
     }
 
     return result
-        .where((element) =>
-            element.idStatus == 1 &&
-            element.dataVencimento != null &&
-            DateTime.parse(element.dataVencimento!).isAfter(DateTime.now()))
+        .where(
+          (element) =>
+              element.idStatus == 1 &&
+              element.dataVencimento != null &&
+              DateTime.parse(element.dataVencimento!).isAfter(
+                DateTime.now(),
+              ),
+        )
         .toList();
   }
 }
