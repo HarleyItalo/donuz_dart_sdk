@@ -1,0 +1,53 @@
+const redemptionsJson = """{
+    "status": 200,
+    "mensagem": "Requisição finalizada com sucesso.",
+    "total": 2,
+    "resgates": [
+        {
+            "id_pedido": 11622911,
+            "produto": "Sanduíche natural",
+            "precoReais": null,
+            "tags": null,
+            "id_produto": 14525,
+            "codigo": null,
+            "des_breve": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                E so resgatar                                                                                                                                                                                                                                                                                                                                                                                                                                    ",
+            "regras": "                                                                                                                                                                                                                                                                                                                                                                                                resgata ai mano                                                                                                                                                                                                                                                                                                                                                                        ",
+            "imagemPrincipal": "https://s3-sa-east-1.amazonaws.com/static.donuz.co/resources/uploads/lojaDePremios/premioImagem/20211202072415230600238.png",
+            "qtd": 1,
+            "preco_vendido": "10.00",
+            "data": "2021-11-02",
+            "data_vencimento": "2021-11-15",
+            "id_status": 2,
+            "status_nome": "Utilizado",
+            "tamanho": null,
+            "barcode": "https://donuz.co/resources/bar/barcode.php?f=png&s=code-39&w=400px&h=100px&d=2234-11622911-1899948",
+            "qrcode": "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chld=H|0&chl=2234-11622911-1899948",
+            "numero_giftcard": null,
+            "senha_giftcard": null,
+            "giftcard_value": null
+        },
+        {
+            "id_pedido": 11622913,
+            "produto": "Sanduíche natural",
+            "precoReais": null,
+            "tags": null,
+            "id_produto": 14525,
+            "codigo": null,
+            "des_breve": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                E so resgatar                                                                                                                                                                                                                                                                                                                                                                                                                                    ",
+            "regras": "                                                                                                                                                                                                                                                                                                                                                                                                resgata ai mano                                                                                                                                                                                                                                                                                                                                                                        ",
+            "imagemPrincipal": "https://s3-sa-east-1.amazonaws.com/static.donuz.co/resources/uploads/lojaDePremios/premioImagem/20211202072415230600238.png",
+            "qtd": 1,
+            "preco_vendido": "10.00",
+            "data": "2021-11-02",
+            "data_vencimento": "2021-11-15",
+            "id_status": 16,
+            "status_nome": "Vencido",
+            "tamanho": null,
+            "barcode": "https://donuz.co/resources/bar/barcode.php?f=png&s=code-39&w=400px&h=100px&d=2234-11622913-1899948",
+            "qrcode": "http://chart.apis.google.com/chart?cht=qr&chs=200x200&chld=H|0&chl=2234-11622913-1899948",
+            "numero_giftcard": null,
+            "senha_giftcard": null,
+            "giftcard_value": null
+        }
+    ]
+}""";

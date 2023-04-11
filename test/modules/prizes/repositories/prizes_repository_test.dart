@@ -2,11 +2,8 @@ import 'dart:convert';
 
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
-import 'package:donuz_dart_sdk/modules/prizes/repositories/prize_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-
-import '../../../json/establisment/banners_json.dart';
 import '../../../json/prizes/prizes_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
