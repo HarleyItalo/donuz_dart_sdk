@@ -28,8 +28,9 @@ main() {
 
       var response = await getAvaliableVouchers();
       expect(response, isNotNull);
+      expect(response, isA<List<Rescue>>());
     });
-    test("Deve retornar uma lista de resgates", () async {
+    test("Deve retornar uma lista vazia", () async {
       when(
         () => getAllRescuesMock(),
       ).thenAnswer((_) async {
