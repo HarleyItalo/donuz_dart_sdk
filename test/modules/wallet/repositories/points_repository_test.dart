@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:donuz_dart_sdk/modules/wallet/wallet_module.dart';
 import 'package:flutter_test/flutter_test.dart';
