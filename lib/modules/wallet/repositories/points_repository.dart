@@ -2,6 +2,17 @@ import '../../common/common_module.dart';
 import '../wallet_module.dart';
 
 abstract class PointsRepository {
+  Future<BaseResponseDonuzModel> insertPoint({
+    required String userIdentification,
+    required double value,
+    required String description,
+    required String appId,
+    String? productCode,
+    String? control,
+    int? filialId,
+    String? ruleId,
+    int? userId,
+  });
   Future<PointsModel> getPoints(
       {required String appId, required String? tokenClient});
   Future<BalanceModel> getBalance(
@@ -13,6 +24,36 @@ class PointsRepositoryImpl extends PointsRepository {
   PointsRepositoryImpl(
     this.httpService,
   );
+  @override
+  Future<BaseResponseDonuzModel> insertPoint(
+      {required String userIdentification,
+      required double value,
+      required String description,
+      required String appId,
+      String? productCode,
+      String? control,
+      int? filialId,
+      String? ruleId,
+      int? userId}) async {
+    final pointModel = PointInsertModel(
+      cliente: userIdentification,
+      valor: value.toString(),
+      dataDeInsercao: DateTime.now(),
+      descricao: description,
+      codigoDoProduto: productCode,
+      controle: control,
+      filialId: filialId,
+      usuarioId: userId,
+      regra: ruleId,
+    );
+
+    final result = await httpService.post(
+      'points',
+      pointModel.toJson(),
+      appId: appId,
+    );
+    return BaseResponseDonuzModel.fromJson(result);
+  }
 
   @override
   Future<PointsModel> getPoints({
