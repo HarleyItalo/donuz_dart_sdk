@@ -22,6 +22,9 @@ class FindEstablishmentByIdImpl extends FindEstablishmentById {
   Future<Estabelecimento?> call({String? id}) async {
     id ??= _config.appId;
     await _storageService.setData("currentId", id, serialize: false);
+    if (id == null) {
+      return null;
+    }
     return await _repository.findById(id);
   }
 

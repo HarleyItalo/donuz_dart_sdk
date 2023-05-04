@@ -1,7 +1,14 @@
 library donuz_dart_sdk;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
+import 'package:http/http.dart' as http;
+import 'package:donuz_dart_sdk/modules/common/common_module.dart';
+
+class DonuzSDK {
+  final _serviceLocator = GetIt.instance;
+  late EstablismentModule establismentModule;
+  DonuzSDK({required BaseConfig config, required http.Client client}) {
+    CommomModule(_serviceLocator, config, client);
+    establismentModule = EstablismentModule(_serviceLocator);
+  }
 }
