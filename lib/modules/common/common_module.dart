@@ -22,7 +22,7 @@ class CommomModule extends BaseModule {
   final http.Client client;
 
   @override
-  void injectModule() {
+  Future injectModule() async {
     instance.registerLazySingletonAsync<HttpService>(
       () async => HttpService(client, config),
     );
@@ -35,5 +35,5 @@ class CommomModule extends BaseModule {
   }
 
   @override
-  void getInstance() {}
+  Future init() async {}
 }

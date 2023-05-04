@@ -7,8 +7,8 @@ abstract class BaseModule {
     required this.instance,
   }) {
     injectModule();
-    getInstance();
+    init();
   }
-  void injectModule();
-  void getInstance();
+  Future injectModule();
+  Future init();
 }

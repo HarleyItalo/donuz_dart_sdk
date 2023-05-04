@@ -23,7 +23,6 @@ import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'establishment_module.dart';
 
 class EstablismentModule extends BaseModule {
-  EstablismentModule(instance) : super(instance: instance);
   late FindEstablishmentById findEstablishmentById;
   late FindEstablishmentBanners findEstablishmentBanners;
   late GetEstablishmentSettings getEstablishmentSettings;
@@ -32,8 +31,10 @@ class EstablismentModule extends BaseModule {
   late SearchByName searchByName;
   late SearchMyLocales searchMyLocales;
 
+  EstablismentModule({required super.instance});
+
   @override
-  void injectModule() {
+  Future injectModule() async {
     instance.registerLazySingletonAsync<EstablishimentRepository>(
       () async => EstablishimentRepositoryImpl(
         await instance.getAsync(),
@@ -101,7 +102,7 @@ class EstablismentModule extends BaseModule {
   }
 
   @override
-  void getInstance() async {
+  Future init() async {
     findEstablishmentById = await instance.getAsync();
     findEstablishmentBanners = await instance.getAsync();
     getEstablishmentSettings = await instance.getAsync();
