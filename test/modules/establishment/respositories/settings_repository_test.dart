@@ -16,7 +16,7 @@ void main() {
       ).thenAnswer(
         (_) async => jsonDecode(settingsJson),
       );
-      var response = await settingsRepository.findSetting('2234', false);
+      var response = await settingsRepository.findSetting(appId: '2234');
       expect(response, isNotNull);
     });
     test("Deve buscar as configuracoes", () async {
@@ -25,7 +25,8 @@ void main() {
       ).thenAnswer(
         (_) async => jsonDecode(settingsJson),
       );
-      var response = await settingsRepository.findSetting('2234', true);
+      var response =
+          await settingsRepository.findSetting(appId: '2234', isLogged: true);
       expect(response, isNotNull);
     });
   });

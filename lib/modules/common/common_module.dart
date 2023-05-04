@@ -33,4 +33,7 @@ class CommomModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<BaseConfig>(() async => config);
   }
+
+  @override
+  void getInstance() {}
 }

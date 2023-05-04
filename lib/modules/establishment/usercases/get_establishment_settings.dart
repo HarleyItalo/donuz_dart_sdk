@@ -22,6 +22,7 @@ class GetEstablishmentSettingsImpl extends GetEstablishmentSettings {
     if (establishmentId == null) {
       return null;
     }
-    return _repository.findSetting(establishmentId, userToken != null);
+    return _repository.findSetting(
+        appId: establishmentId, isLogged: userToken != null);
   }
 }
