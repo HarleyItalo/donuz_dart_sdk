@@ -9,10 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: 
-  http: 
-  intl:
-  get_it: 
+  shared_preferences: '>=2.1.0 <3.0.0'
+  http: '>=0.13.6 <1.0.0'
+  intl: '>=0.18.1 <1.0.0'
+  get_it: '>=7.4.1 <8.0.0'
 
 dev_dependencies:
   flutter_test:
