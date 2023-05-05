@@ -48,13 +48,22 @@ class UserModule extends BaseModule {
 
   @override
   Future injectModule() async {
-    instance.registerLazySingletonAsync<LoginRepository>(() async =>
-        LoginRepositoryImpl(
-            await instance.getAsync(), await instance.getAsync()));
+    instance.registerLazySingletonAsync<LoginRepository>(
+      () async => LoginRepositoryImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
     instance.registerLazySingletonAsync<UserRepository>(
-        () async => UserRepositoryImpl(await instance.getAsync()));
+      () async => UserRepositoryImpl(
+        await instance.getAsync(),
+      ),
+    );
     instance.registerLazySingletonAsync<GetLoggedUserToken>(
-        () async => GetLoggedUserTokenImpl(await instance.getAsync()));
+      () async => GetLoggedUserTokenImpl(
+        await instance.getAsync(),
+      ),
+    );
     instance.registerLazySingletonAsync<DeleteUser>(
       () async => DeleteUserImpl(
         await instance.getAsync(),
