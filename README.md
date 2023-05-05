@@ -39,30 +39,28 @@ void main() async {
 
 ## Examples
 
+### Retorna as informações do estabelecimento informado no appId na configuracão da sdk
 ```Dart
     donuzSDK.establisment.findEstablishmentById();
 ```
-Retorna as informações do estabelecimento informado no appId na configuracão da sdk
 
+
+
+### Retorna todos os prêmios cadastrados. 
 ```Dart
     await donuzSDK.prizes.getPrizes();
 ```
 
-Retorna todos os prêmios cadastrados. 
-
+### Faz o Login do usuario
 ```Dart
    await donuzSDK.user.makeLogin(username: '12345678909',password: '12345678909');
 ```
 
-Faz o Login do Usuario
-```Dart
-   await donuzSDK.user.makeLogin(username: '12345678909',password: '12345678909');
-```
-
-Faz o Logout
+### Faz o Logout do usuario.
 ```Dart
   await donuzSDK.user.makeLogout();
 ```
+
 
 
 
