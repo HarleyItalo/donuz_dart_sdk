@@ -3,6 +3,7 @@ import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 export 'config/config.dart';
+export 'package:http/http.dart';
 // models
 export 'models/location_coordinates_model.dart';
 export 'models/base_response_donuz_model.dart';

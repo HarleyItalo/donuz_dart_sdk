@@ -1,7 +1,7 @@
 name: donuz_dart_sdk
-description: Donuz Dart SDK to comunicate with donuz API
-version: 0.0.1
-homepage:
+description: Donuz Dart SDK to comunicate with Donuz API
+version: 1.0.0
+homepage: https://github.com/HarleyItalo/donuz_dart_sdk
 environment:
   sdk: '>=2.19.2 <3.0.0'
   flutter: ">=1.17.0"
