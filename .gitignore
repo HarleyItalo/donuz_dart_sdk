@@ -30,4 +30,3 @@ migrate_working_dir/
 build/
 coverage/html
 .vscode/
-linux/flutter/ephemeral/
