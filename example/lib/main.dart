@@ -1,6 +1,5 @@
 import 'package:donuz_dart_sdk/donuz_dart_sdk.dart';
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 
@@ -8,7 +7,6 @@ late DonuzSDK donuzSDK;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   donuzSDK = DonuzSDK(
-      client: http.Client(),
       config: DonuzConfig(donuzToken: '<YOUR TOKEN>', appId: '<YOUR APPID>'));
   await donuzSDK.init();
 

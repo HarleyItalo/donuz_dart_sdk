@@ -15,7 +15,8 @@ class DonuzSDK {
   late PrizeModule prizes;
   late WalletModule wallet;
   late RedemptionModule redemption;
-  DonuzSDK({required BaseConfig config, required http.Client client}) {
+  DonuzSDK({required BaseConfig config, http.Client? client}) {
+    client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
     establisment = EstablismentModule(instance: _serviceLocator);
     user = UserModule(instance: _serviceLocator);
