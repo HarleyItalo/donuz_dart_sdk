@@ -8,6 +8,8 @@ import 'package:donuz_dart_sdk/modules/wallet/wallet_module.dart';
 import 'package:http/http.dart' as http;
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 
+import 'modules/feedback/feedback_module.dart';
+
 class DonuzSDK {
   final _serviceLocator = GetIt.instance;
   late EstablismentModule establisment;
@@ -15,6 +17,7 @@ class DonuzSDK {
   late PrizeModule prizes;
   late WalletModule wallet;
   late RedemptionModule redemption;
+  late FeedbackModule feedback;
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -23,6 +26,7 @@ class DonuzSDK {
     prizes = PrizeModule(instance: _serviceLocator);
     wallet = WalletModule(instance: _serviceLocator);
     redemption = RedemptionModule(instance: _serviceLocator);
+    feedback = FeedbackModule(instance: _serviceLocator);
   }
   init() async {
     await establisment.init();
@@ -30,5 +34,6 @@ class DonuzSDK {
     await prizes.init();
     await wallet.init();
     await redemption.init();
+    await feedback.init();
   }
 }
