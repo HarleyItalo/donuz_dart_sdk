@@ -1,11 +1,11 @@
 //constants
 import 'package:donuz_dart_sdk/modules/base_module.dart';
-import 'package:donuz_dart_sdk/modules/user/usercases/send_sms_before_registration.dart';
 
 export 'constants/login_constants.dart';
 //models
 export 'models/login_model.dart';
 export 'models/user_model.dart';
+export 'models/user_notifications.dart';
 //repositories
 export 'repositories/login_repository.dart';
 export 'repositories/user_repository.dart';
@@ -18,6 +18,10 @@ export 'usercases/get_user.dart';
 export 'usercases/register_user.dart';
 export 'usercases/update_user.dart';
 export 'usercases/delete_user.dart';
+export 'usercases/get_user_notifications.dart';
+export 'usercases/mark_as_read_notification.dart';
+export 'usercases/send_sms_before_registration.dart';
+export 'usercases/update_notification_token.dart';
 
 import 'user_module.dart';
 
@@ -32,6 +36,9 @@ class UserModule extends BaseModule {
   late RememberPassword rememberPassword;
   late SendSmsBeforeRegistration sendSmsBeforeRegistration;
   late UpdateUser updateUser;
+  late GetUserNotifications userNotifications;
+  late MarkAsReadNotification markAsReadNotification;
+  late UpdateNotificationToken updateNotificationToken;
 
   @override
   Future init() async {
@@ -44,6 +51,9 @@ class UserModule extends BaseModule {
     rememberPassword = await instance.getAsync();
     sendSmsBeforeRegistration = await instance.getAsync();
     updateUser = await instance.getAsync();
+    userNotifications = await instance.getAsync();
+    markAsReadNotification = await instance.getAsync();
+    updateNotificationToken = await instance.getAsync();
   }
 
   @override
@@ -110,6 +120,25 @@ class UserModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<UpdateUser>(
       () async => UpdateUserImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<GetUserNotifications>(
+      () async => GetUserNotificationsImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<MarkAsReadNotification>(
+      () async => MarkAsReadNotificationImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<UpdateNotificationToken>(
+      () async => UpdateNotificationTokenImpl(
         await instance.getAsync(),
         await instance.getAsync(),
         await instance.getAsync(),

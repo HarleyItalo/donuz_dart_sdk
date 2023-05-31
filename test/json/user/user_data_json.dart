@@ -9,7 +9,7 @@ const userDataJson = '''{
         "codigo_cliente": "22341861202012141735121403",
         "estabelecimento_origem": 2234,
         "foto": null,
-        "email": "harley@donuz.co",
+        "email": "teste@donuz.co",
         "telefone": null,
         "celular": null,
         "endereco": null,

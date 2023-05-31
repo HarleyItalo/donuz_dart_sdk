@@ -9,7 +9,7 @@ import '../../../mocks/common/http_client_mock.dart';
 
 void main() {
   http.Client clientMock = HttpClientMock();
-  BaseConfig config = BaseConfigMock();
+  BaseConfig config = BaseConfigMock("2234", 'alksdjlaksd');
   var httpService = HttpService(clientMock, config);
 
   setUpAll(() {

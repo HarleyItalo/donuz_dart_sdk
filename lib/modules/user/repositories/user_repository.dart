@@ -1,4 +1,5 @@
 import '../../common/common_module.dart';
+
 import '../user_module.dart';
 
 abstract class UserRepository {
@@ -22,6 +23,19 @@ abstract class UserRepository {
   });
   Future<bool> sendSmsBeforeRegistration({
     required String phoneNumber,
+    required String appId,
+  });
+  Future<UserNotificationModel?> findNotifications({
+    required String appId,
+    required String userId,
+  });
+  Future<bool> updateNotificationToken({
+    required String playerId,
+    required String appId,
+    required String tokenClient,
+  });
+  Future<bool> markAsReadNotification({
+    required String notificationId,
     required String appId,
   });
 }
@@ -98,5 +112,42 @@ class UserRepositoryImpl extends UserRepository {
         appId: appId);
     final response = BaseResponseDonuzModel.fromJson(result);
     return response.status == 200;
+  }
+
+  @override
+  Future<UserNotificationModel?> findNotifications({
+    required String appId,
+    required String userId,
+  }) async {
+    var response =
+        await httpService.get("client/$userId/notifications", appId: appId);
+    return UserNotificationModel.fromJson(response);
+  }
+
+  @override
+  Future<bool> markAsReadNotification({
+    required String notificationId,
+    required String appId,
+  }) async {
+    var result = await httpService.put(
+      'notification/$notificationId/readed',
+      {},
+      appId: appId,
+    );
+    var notifications = BaseResponseDonuzModel.fromJson(result);
+    return notifications.status == 200;
+  }
+
+  @override
+  Future<bool> updateNotificationToken(
+      {required String playerId,
+      required String appId,
+      required String tokenClient}) async {
+    var result = await httpService.post(
+        'notification/updateTokenNotification', {'player_id': playerId},
+        tokenCliente: tokenClient, appId: appId);
+    var response = BaseResponseDonuzModel.fromJson(result);
+
+    return (response.status == 200);
   }
 }

@@ -20,6 +20,7 @@ class GetUserImpl extends GetUser {
   Future<User?> call() async {
     var response = await Future.wait(
         [_findEstablishmentById.currentId(), _getLoggedUserToken()]);
+
     for (var element in response) {
       if (element == null) return null;
     }

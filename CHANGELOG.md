@@ -15,3 +15,6 @@
 
 ## 1.0.4
 * Adicionando o modulo de presentes
+
+## 1.0.5
+* Adicionando o modulo de Cupons fiscais nfce e adicionando a modulo de usuario as formas de envio e recebimento de notificacoes push.

@@ -34,6 +34,6 @@ class RegisterUserImpl extends RegisterUser {
           username: StringUtil.onlyNumbers(user.cpf),
           password: user.senha ?? '');
     }
-    return null;
+    return LoginModel(status: sucess.status, mensagem: sucess.mensagem);
   }
 }

@@ -42,5 +42,28 @@ void main() {
       var response = await registerUser(user: userData.client!);
       expect(response, isNotNull);
     });
+    test("Deve registrar um usuario", () async {
+      var userData = UserModel.fromJson(jsonDecode(userDataJson));
+      userData.client?.senha = "123";
+
+      when(
+        () => findEstablishmentByIdMock.currentId(),
+      ).thenAnswer(
+        (_) async => '2234',
+      );
+      when(() => makeLoginMock(password: '123', username: '12345678909'))
+          .thenAnswer(
+        (_) async => LoginModel(),
+      );
+      when(
+        () => userRepositoryMock.registerUser(
+            user: userData.client!, appId: "2234"),
+      ).thenAnswer((_) async => BaseResponseDonuzModel(
+          status: 500, mensagem: "Usuario ja cadastrado"));
+
+      var response = await registerUser(user: userData.client!);
+      expect(response, isNotNull);
+      expect(response?.status, 500);
+    });
   });
 }

@@ -15,7 +15,9 @@ void main() async {
   StorageService storageService =
       StorageService(await SharedPreferences.getInstance());
   var findEstablishmentById = FindEstablishmentByIdImpl(
-      establismentRepositoryMock, BaseConfigMock(), storageService);
+      establismentRepositoryMock,
+      BaseConfigMock("2234", 'alksdjlaksd'),
+      storageService);
 
   group("FindEstablishmentById", () {
     test('Deve buscar um establecimento por id', () async {

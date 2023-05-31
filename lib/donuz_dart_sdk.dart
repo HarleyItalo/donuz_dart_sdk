@@ -1,5 +1,6 @@
 library donuz_dart_sdk;
 
+import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
 import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
@@ -20,6 +21,7 @@ class DonuzSDK {
   late RedemptionModule redemption;
   late FeedbackModule feedback;
   late GiftModule gift;
+  late CouponModule coupon;
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -30,14 +32,19 @@ class DonuzSDK {
     redemption = RedemptionModule(instance: _serviceLocator);
     feedback = FeedbackModule(instance: _serviceLocator);
     gift = GiftModule(instance: _serviceLocator);
+    coupon = CouponModule(instance: _serviceLocator);
   }
   init() async {
-    await establisment.init();
-    await user.init();
-    await prizes.init();
-    await wallet.init();
-    await redemption.init();
-    await feedback.init();
-    await gift.init();
+    await Future.wait([
+      establisment.init(),
+      user.init(),
+      user.init(),
+      prizes.init(),
+      wallet.init(),
+      redemption.init(),
+      feedback.init(),
+      gift.init(),
+      coupon.init(),
+    ]);
   }
 }
