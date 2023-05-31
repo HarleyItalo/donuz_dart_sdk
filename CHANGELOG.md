@@ -12,3 +12,6 @@
 
 ## 1.0.3
 * Adicionando suporte ao Dart 3
+
+## 1.0.4
+* Adicionando o modulo de presentes
