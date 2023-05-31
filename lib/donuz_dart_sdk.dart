@@ -1,6 +1,7 @@
 library donuz_dart_sdk;
 
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
+import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
 import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
 import 'package:donuz_dart_sdk/modules/redemption/redemption_module.dart';
 import 'package:donuz_dart_sdk/modules/user/user_module.dart';
@@ -18,6 +19,7 @@ class DonuzSDK {
   late WalletModule wallet;
   late RedemptionModule redemption;
   late FeedbackModule feedback;
+  late GiftModule gift;
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -27,6 +29,7 @@ class DonuzSDK {
     wallet = WalletModule(instance: _serviceLocator);
     redemption = RedemptionModule(instance: _serviceLocator);
     feedback = FeedbackModule(instance: _serviceLocator);
+    gift = GiftModule(instance: _serviceLocator);
   }
   init() async {
     await establisment.init();
@@ -35,5 +38,6 @@ class DonuzSDK {
     await wallet.init();
     await redemption.init();
     await feedback.init();
+    await gift.init();
   }
 }
