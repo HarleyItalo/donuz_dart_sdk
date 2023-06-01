@@ -1,5 +1,6 @@
 library donuz_dart_sdk;
 
+import 'package:donuz_dart_sdk/modules/contact/contact_module.dart';
 import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
@@ -22,6 +23,7 @@ class DonuzSDK {
   late FeedbackModule feedback;
   late GiftModule gift;
   late CouponModule coupon;
+  late ContactModule contact;
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -33,6 +35,7 @@ class DonuzSDK {
     feedback = FeedbackModule(instance: _serviceLocator);
     gift = GiftModule(instance: _serviceLocator);
     coupon = CouponModule(instance: _serviceLocator);
+    contact = ContactModule(instance: _serviceLocator);
   }
   init() async {
     await Future.wait([
@@ -45,6 +48,7 @@ class DonuzSDK {
       feedback.init(),
       gift.init(),
       coupon.init(),
+      contact.init(),
     ]);
   }
 }

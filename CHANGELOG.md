@@ -1,13 +1,10 @@
 ## 1.0.0
-
 * initial release.
 
 ## 1.0.1
-
 * Removendo obrigatoriedade de passar o http client.
 
 ## 1.0.2
-
 * Adicionando o modulo de pesquisa de satisfacao
 
 ## 1.0.3
@@ -18,3 +15,6 @@
 
 ## 1.0.5
 * Adicionando o modulo de Cupons fiscais nfce e adicionando a modulo de usuario as formas de envio e recebimento de notificacoes push.
+
+## 1.0.6
+* Adicionando o modulo de contato adicionando metodos de busca de premios por id e busca de categorias de premios

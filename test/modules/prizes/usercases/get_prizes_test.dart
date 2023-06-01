@@ -15,7 +15,7 @@ void main() async {
   group("GetPrizes", () {
     test("Deve Buscar todos os premios de um estabelecimento", () async {
       when(() => prizesRepositoryMock.getPrizes("2234")).thenAnswer(
-          (_) async => PrizeModel.fromJson(jsonDecode(prizesJson)).premios);
+          (_) async => PrizesModel.fromJson(jsonDecode(prizesJson)).premios);
       when(() => findEstablismentByIdMock.currentId())
           .thenAnswer((_) async => "2234");
 
@@ -32,9 +32,7 @@ void main() async {
       var response = await getPrizes();
       expect(response, isNull);
     });
-    test(
-        "Deve retornar uma lista vazia caso o estabelecimento não tenha banners",
-        () async {
+    test("Deve retornar uma nulo", () async {
       when(() => findEstablismentByIdMock.currentId())
           .thenAnswer((_) async => "2234");
 
