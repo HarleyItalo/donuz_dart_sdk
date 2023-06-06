@@ -18,3 +18,6 @@
 
 ## 1.0.6
 * Adicionando o modulo de contato adicionando metodos de busca de premios por id e busca de categorias de premios
+
+## 1.0.7
+* Adicionando requisicao de busca de estabelecimento por slug.

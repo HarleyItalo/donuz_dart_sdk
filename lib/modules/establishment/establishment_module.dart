@@ -18,6 +18,7 @@ export 'usercases/search_by_location.dart';
 export 'usercases/search_by_name.dart';
 export 'usercases/search_my_locales.dart';
 export 'usercases/get_establishment_settings.dart';
+export 'usercases/search_by_slug.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'establishment_module.dart';
@@ -30,6 +31,7 @@ class EstablismentModule extends BaseModule {
   late GetRegulation getRegulation;
   late SearchByName searchByName;
   late SearchMyLocales searchMyLocales;
+  late SearchBySlug searchBySlug;
 
   EstablismentModule({required super.instance});
 
@@ -99,6 +101,11 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<SearchBySlug>(
+      () async => SearchBySlugImpl(
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -110,5 +117,6 @@ class EstablismentModule extends BaseModule {
     searchByName = await instance.getAsync();
     getRegulation = await instance.getAsync();
     searchMyLocales = await instance.getAsync();
+    searchBySlug = await instance.getAsync();
   }
 }

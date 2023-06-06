@@ -53,12 +53,32 @@ void main() async {
       },
     );
     test(
+      "Deve retornar os estabelecimentos passando o nome",
+      () async {
+        when(
+          () => httpService.post("estabelishments", {"slug": "encanto"}),
+        ).thenAnswer((_) async => jsonDecode(establishmentByNameJson));
+        var response = await repository.findBySlug("encanto");
+        expect(response.isNotEmpty, true);
+      },
+    );
+    test(
       "Deve retornar uma lista vazia de estabelecimentos",
       () async {
         when(
           () => httpService.post("estabelishments", {"nome": "encanto"}),
         ).thenAnswer((_) async => {});
         var response = await repository.findByName("encanto");
+        expect(response.isEmpty, true);
+      },
+    );
+    test(
+      "Deve retornar uma lista vazia de estabelecimentos",
+      () async {
+        when(
+          () => httpService.post("estabelishments", {"slug": "encanto"}),
+        ).thenAnswer((_) async => {});
+        var response = await repository.findBySlug("encanto");
         expect(response.isEmpty, true);
       },
     );

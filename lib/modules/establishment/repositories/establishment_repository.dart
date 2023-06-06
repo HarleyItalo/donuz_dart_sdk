@@ -8,6 +8,7 @@ abstract class EstablishimentRepository {
   Future<List<Estabelecimento>> findByName(String name);
   Future<Estabelecimento?> findById(String id);
   Future<List<Estabelecimento>> findMyLocals(String token);
+  Future<List<Estabelecimento>> findBySlug(String slug);
 }
 
 class EstablishimentRepositoryImpl extends EstablishimentRepository {
@@ -48,6 +49,16 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
   Future<List<Estabelecimento>> findByName(String name) async {
     Map<String, dynamic> body = <String, String>{
       "nome": name,
+    };
+    var json = await httpService.post("estabelishments", body);
+    var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
+    return establishments ?? <Estabelecimento>[];
+  }
+
+  @override
+  Future<List<Estabelecimento>> findBySlug(String slug) async {
+    Map<String, dynamic> body = <String, String>{
+      "slug": slug,
     };
     var json = await httpService.post("estabelishments", body);
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
