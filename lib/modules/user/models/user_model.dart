@@ -111,6 +111,9 @@ class User {
     categoria = json['categoria'] != null
         ? Categoria.fromJson(json['categoria'])
         : null;
+    if (json['camposAdicionais'] is List<dynamic>) {
+      return;
+    }
     var camposAd = json['camposAdicionais'] as Map<dynamic, dynamic>;
     camposAdicionais = json['camposAdicionais'] != null && camposAd.isNotEmpty
         ? CamposAdicionais.fromJson(json['camposAdicionais'])

@@ -21,3 +21,6 @@
 
 ## 1.0.7
 * Adicionando requisicao de busca de estabelecimento por slug.
+
+## 1.0.8
+* Correção do parsing do json do modulo de usuario.
