@@ -24,3 +24,6 @@
 
 ## 1.0.8
 * Correção do parsing do json do modulo de usuario.
+
+## 1.0.9
+* Correção do parsing do json das configuracoes.

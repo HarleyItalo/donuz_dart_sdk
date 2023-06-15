@@ -86,6 +86,7 @@ class Configuracoes {
   bool? habilitarOfertas;
   bool? bloquearControleDuplicado;
   bool? appCartaoFidelidade;
+  bool? habilitarInsercaoNfce;
   dynamic quantidadeSelos;
   String? configuracaoAutomatica;
   List<CamposAdicionais>? camposAdicionais;
@@ -182,6 +183,7 @@ class Configuracoes {
     appCartaoFidelidade = json['app_cartao_fidelidade'];
     quantidadeSelos = json['quantidade_selos'] ?? 0;
     configuracaoAutomatica = json['configuracao_automatica'];
+    habilitarInsercaoNfce = json['habilitar_insercao_nfce'];
     if (json['campos_adicionais'] != null) {
       camposAdicionais = <CamposAdicionais>[];
       json['campos_adicionais'].forEach((v) {
