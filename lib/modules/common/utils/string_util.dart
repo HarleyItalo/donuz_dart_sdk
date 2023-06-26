@@ -15,7 +15,11 @@ class StringUtil {
   }
 
   static double parseStringToDouble(String? value) {
-    value = onlyNumbers(value);
+    var isNumber = onlyNumbers(value);
+    if (isNumber.isEmpty) return 0.0;
+    if (value == null) {
+      return 0.0;
+    }
     if (value.isEmpty) {
       return 0.0;
     }

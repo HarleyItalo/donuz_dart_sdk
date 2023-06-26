@@ -30,3 +30,6 @@
 
 ## 1.0.10
 * Melhorando a busca de estabelecimentos logados.
+
+## 1.0.11
+* Corrigindo a conversão de string para double.
