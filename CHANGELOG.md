@@ -27,3 +27,6 @@
 
 ## 1.0.9
 * Correção do parsing do json das configuracoes.
+
+## 1.0.10
+* Melhorando a busca de estabelecimentos logados.

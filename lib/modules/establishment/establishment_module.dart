@@ -99,6 +99,7 @@ class EstablismentModule extends BaseModule {
     instance.registerLazySingletonAsync<SearchMyLocales>(
       () async => SearchMyLocalesImpl(
         await instance.getAsync(),
+        await instance.getAsync(),
       ),
     );
     instance.registerLazySingletonAsync<SearchBySlug>(

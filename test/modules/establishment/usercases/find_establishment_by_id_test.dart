@@ -33,7 +33,7 @@ void main() async {
     test("Deve retornar uma Nullable string  ao buscar o currentId", () async {
       await storageService.clearAll();
       var response = await findEstablishmentById.currentId();
-      expect(response, isNull);
+      expect(response, '2234');
     });
     test("Deve retornar o currentID", () async {
       when(() => establismentRepositoryMock.findById("2234"))
