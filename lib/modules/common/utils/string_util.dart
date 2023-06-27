@@ -16,16 +16,11 @@ class StringUtil {
 
   static double parseStringToDouble(String? value) {
     var isNumber = onlyNumbers(value);
-    if (isNumber.isEmpty) return 0.0;
-    if (value == null) {
+    if (isNumber.isEmpty || value == null || value.isEmpty) {
       return 0.0;
     }
-    if (value.isEmpty) {
-      return 0.0;
-    }
-    return double.parse(
-      value.replaceAll('.', '').replaceAll(',', '.'),
-    );
+    value = value.replaceAll('.', '').replaceAll(',', '.');
+    return double.parse(value);
   }
 
   static bool emailIsValid(String email) {
