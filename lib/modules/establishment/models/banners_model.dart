@@ -1,10 +1,10 @@
 class BannerModel {
-  List<Banners>? banners = <Banners>[];
+  List<Banners> banners = <Banners>[];
   BannerModel.fromJson(Map<String, dynamic> json) {
     if (json['banners'] != null) {
       banners = <Banners>[];
       json['banners'].forEach((v) {
-        banners!.add(Banners.fromJson(v));
+        banners.add(Banners.fromJson(v));
       });
     }
   }

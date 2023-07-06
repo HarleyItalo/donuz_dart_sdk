@@ -2,7 +2,7 @@ class EstabelishmentModel {
   int? status;
   String? mensagem;
   int? total;
-  List<Estabelecimento>? estabelecimentos;
+  List<Estabelecimento> estabelecimentos = <Estabelecimento>[];
   Estabelecimento? estabelecimento;
 
   EstabelishmentModel.fromJson(Map<String, dynamic> json) {
@@ -12,7 +12,7 @@ class EstabelishmentModel {
     if (json['estabelecimentos'] != null) {
       estabelecimentos = <Estabelecimento>[];
       json['estabelecimentos'].forEach((v) {
-        estabelecimentos!.add(Estabelecimento.fromJson(v));
+        estabelecimentos.add(Estabelecimento.fromJson(v));
       });
     }
   }

@@ -33,3 +33,7 @@
 
 ## 1.0.11
 * Corrigindo a conversão de string para double.
+
+
+## 1.0.12
+* Melhorando a usabildade de alguns campos nulos.

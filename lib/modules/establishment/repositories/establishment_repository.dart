@@ -42,7 +42,7 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
     var json = await httpService.post("estabelishments", body);
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
 
-    return establishments ?? <Estabelecimento>[];
+    return establishments;
   }
 
   @override
@@ -52,7 +52,7 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
     };
     var json = await httpService.post("estabelishments", body);
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
-    return establishments ?? <Estabelecimento>[];
+    return establishments;
   }
 
   @override
@@ -62,7 +62,7 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
     };
     var json = await httpService.post("estabelishments", body);
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
-    return establishments ?? <Estabelecimento>[];
+    return establishments;
   }
 
   @override
@@ -72,6 +72,6 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
       tokenCliente: token,
     );
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
-    return establishments ?? <Estabelecimento>[];
+    return establishments;
   }
 }

@@ -13,7 +13,7 @@ class PrizeCategoryModel {
   int? status;
   String? mensagem;
   int? total;
-  List<Categoria?>? categorias;
+  List<Categoria> categorias = <Categoria>[];
   PrizeCategoryModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     mensagem = json['mensagem'];
@@ -21,7 +21,7 @@ class PrizeCategoryModel {
     if (json['categorias'] != null) {
       categorias = <Categoria>[];
       json['categorias'].forEach((v) {
-        categorias!.add(Categoria.fromJson(v));
+        categorias.add(Categoria.fromJson(v));
       });
     }
   }

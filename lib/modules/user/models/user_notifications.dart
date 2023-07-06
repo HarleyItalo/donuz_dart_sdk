@@ -36,14 +36,14 @@ class Notificacao {
 class UserNotificationModel {
   int? status;
   int? total;
-  List<Notificacao?>? notificacoes;
+  List<Notificacao> notificacoes = <Notificacao>[];
   UserNotificationModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     total = json['total'];
     if (json['notificacoes'] != null) {
       notificacoes = <Notificacao>[];
       json['notificacoes'].forEach((v) {
-        notificacoes!.add(Notificacao.fromJson(v));
+        notificacoes.add(Notificacao.fromJson(v));
       });
     }
   }
