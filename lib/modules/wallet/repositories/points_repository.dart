@@ -13,10 +13,27 @@ abstract class PointsRepository {
     String? ruleId,
     int? userId,
   });
-  Future<PointsModel> getPoints(
-      {required String appId, required String? tokenClient});
-  Future<BalanceModel> getBalance(
-      {required String appId, required String? tokenClient});
+  Future<PointsModel> getPoints({
+    required String appId,
+    required String? tokenClient,
+  });
+  Future<BalanceModel> getBalance({
+    required String appId,
+    required String? tokenClient,
+  });
+
+  Future<BaseResponseDonuzModel> validadePunctuableCode({
+    required String code,
+    required String? tokenClient,
+    String? value,
+    required String appId,
+  });
+
+  Future<BaseResponseDonuzModel> validadeQrCode({
+    required String code,
+    required String? tokenClient,
+    required String appId,
+  });
 }
 
 class PointsRepositoryImpl extends PointsRepository {
@@ -76,5 +93,34 @@ class PointsRepositoryImpl extends PointsRepository {
       tokenCliente: tokenClient,
     );
     return BalanceModel.fromJson(result);
+  }
+
+  @override
+  Future<BaseResponseDonuzModel> validadePunctuableCode({
+    required String code,
+    required String? tokenClient,
+    String? value,
+    required String appId,
+  }) async {
+    var result = await httpService.post(
+        'computableCode', {"codigo": code, "valor": value},
+        appId: appId, tokenCliente: tokenClient);
+    return BaseResponseDonuzModel.fromJson(result);
+  }
+
+  @override
+  Future<BaseResponseDonuzModel> validadeQrCode({
+    required String code,
+    required String? tokenClient,
+    required String appId,
+  }) async {
+    var result = await httpService.post(
+        'qrcode',
+        {
+          "codigo": code,
+        },
+        appId: appId,
+        tokenCliente: tokenClient);
+    return BaseResponseDonuzModel.fromJson(result);
   }
 }

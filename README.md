@@ -28,7 +28,6 @@ late DonuzSDK donuzSDK;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   donuzSDK = DonuzSDK(
-      client: http.Client(),
       config: DonuzConfig(donuzToken: '<YOUR TOKEN>', appId: '<YOUR APPID>'));
   await donuzSDK.init();
 

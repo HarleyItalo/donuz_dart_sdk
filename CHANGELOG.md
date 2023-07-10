@@ -37,3 +37,6 @@
 
 ## 1.0.12
 * Melhorando a usabildade de alguns campos nulos.
+
+## 1.0.13
+* Adicionando os modulos de leitura de qr code e codigo pontuavel.

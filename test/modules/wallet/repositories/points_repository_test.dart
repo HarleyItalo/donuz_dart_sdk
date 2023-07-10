@@ -7,6 +7,7 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../../json/wallet/balance_json.dart';
 import '../../../json/wallet/extract_json.dart';
+import '../../../json/wallet/punctuable_code_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 main() {
@@ -71,6 +72,28 @@ main() {
         appId: '2234',
       );
       expect(response, isNotNull);
+    });
+    test('Deve inserir um codigo pontuavel', () async {
+      when(() => httpServiceMock.post(
+          'computableCode', {"codigo": "123", "valor": '10'},
+          tokenCliente: '123', appId: "2234")).thenAnswer(
+        (_) async => jsonDecode(punctuableCodeJson),
+      );
+      var response = await repository.validadePunctuableCode(
+          code: '123', value: '10', tokenClient: '123', appId: '2234');
+      expect(response.status, 200);
+    });
+    test('Deve inserir um qrcode', () async {
+      when(() => httpServiceMock.post('qrcode', {"codigo": "123"},
+          tokenCliente: '123', appId: "2234")).thenAnswer(
+        (_) async => jsonDecode(punctuableCodeJson),
+      );
+      var response = await repository.validadeQrCode(
+        code: '123',
+        tokenClient: '123',
+        appId: '2234',
+      );
+      expect(response.status, 200);
     });
   });
 }
