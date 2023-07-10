@@ -40,3 +40,7 @@
 
 ## 1.0.13
 * Adicionando os modulos de leitura de qr code e codigo pontuavel.
+
+
+## 1.0.14
+* Corrigindo a conversao das notificacoes do usuario.

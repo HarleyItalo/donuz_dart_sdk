@@ -11,7 +11,7 @@ class Notificacao {
   String? linkimagem;
   String? tipo;
   String? dataenvio;
-  String? idagendamento;
+  dynamic idagendamento;
   int? mensagemid;
   String? link;
   Notificacao.fromJson(Map<String, dynamic> json) {

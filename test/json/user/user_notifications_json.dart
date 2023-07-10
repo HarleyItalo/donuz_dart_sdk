@@ -16,7 +16,7 @@ const String userNotificationJson = """
             "link_imagem": "",
             "tipo": "push_notification",
             "data_envio": "2020-07-21 15:55:40",
-            "id_agendamento": "1",
+            "id_agendamento": 1,
             "mensagem_id": 1,
             "link": "http://www.donuz.co"
         }
