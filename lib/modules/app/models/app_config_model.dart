@@ -12,11 +12,11 @@ class AppConfigModel {
 }
 
 class AppConfig {
-  late int estabelecimentoId;
+  late int? estabelecimentoId;
   late int useAppDefault;
   late String color;
-  late String iOSVersionCode;
-  late String androidVersionCode;
+  late String? iOSVersionCode;
+  late String? androidVersionCode;
   late String? lastUpdate;
 
   AppConfig.fromJson(Map<String, dynamic> json) {

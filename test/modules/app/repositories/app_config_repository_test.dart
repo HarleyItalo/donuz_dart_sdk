@@ -19,5 +19,12 @@ void main() async {
       expect(response, isNotNull);
       expect(response.appConfig?.estabelecimentoId, 2234);
     });
+    test("Deve buscar a config do app", () async {
+      when(() => httpService.get("app/config", appId: "2234")).thenAnswer(
+          (_) async => jsonDecode(appConfigWithOutEstablismentJson));
+      var response = await repository.findAppConfig(appId: '2234');
+      expect(response, isNotNull);
+      expect(response.appConfig?.estabelecimentoId, null);
+    });
   });
 }
