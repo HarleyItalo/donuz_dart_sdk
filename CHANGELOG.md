@@ -46,3 +46,6 @@
 ## 1.0.15
 * adicionando o modulo de busca de configuracao do app
 
+## 1.0.16
+* corrigindo o parse do json da config do app
+
