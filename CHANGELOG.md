@@ -41,6 +41,8 @@
 ## 1.0.13
 * Adicionando os modulos de leitura de qr code e codigo pontuavel.
 
-
 ## 1.0.14
 * Corrigindo a conversao das notificacoes do usuario.
+## 1.0.15
+* adicionando o modulo de busca de configuracao do app
+
