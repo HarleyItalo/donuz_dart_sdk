@@ -49,3 +49,6 @@
 ## 1.0.16
 * corrigindo o parse do json da config do app
 
+## 1.0.17
+* Limpando todo o storage apos o logout
+
