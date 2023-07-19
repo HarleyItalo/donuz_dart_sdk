@@ -67,6 +67,6 @@ class LoginRepositoryImpl extends LoginRepository {
 
   @override
   Future<bool> makeLogout() async {
-    return await storageService.dropKey(loginTokenKey);
+    return await storageService.clearAll();
   }
 }
