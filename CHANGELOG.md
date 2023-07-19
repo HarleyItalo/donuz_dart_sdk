@@ -52,3 +52,6 @@
 ## 1.0.17
 * Limpando todo o storage apos o logout
 
+## 1.0.18
+* Corrigindo get sem campo adicionais
+

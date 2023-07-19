@@ -35,5 +35,24 @@ void main() {
       var response = await getUser();
       expect(response, isNotNull);
     });
+
+    test("Deve buscar o usuario sem campos adicionais", () async {
+      when(
+        () => findEstablishmentByIdMock.currentId(),
+      ).thenAnswer(
+        (_) async => '2234',
+      );
+      when(
+        () => getLoggedUserTokenMock(),
+      ).thenAnswer(
+        (_) async => "123",
+      );
+      when(
+        () => userRepositoryMock.getUser(appId: "2234", userInfo: '123'),
+      ).thenAnswer((invocation) async =>
+          UserModel.fromJson(jsonDecode(userDataWithOutAditionals)).client);
+      var response = await getUser();
+      expect(response, isNotNull);
+    });
   });
 }
