@@ -55,3 +55,6 @@
 ## 1.0.18
 * Corrigindo get sem campo adicionais
 
+## 1.0.19
+* Corrigindo conversoes.
+
