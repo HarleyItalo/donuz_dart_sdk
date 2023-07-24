@@ -75,11 +75,11 @@ class Configuracoes {
   String? onesignalToken;
   dynamic verboClientes;
   dynamic verboCliente;
-  bool? galaxHash;
-  bool? galaxId;
+  dynamic galaxHash;
+  dynamic galaxId;
   bool? desabilitaResgateClienteNaoIndicou;
   bool? habilitarDoacao;
-  bool? emailProprio;
+  dynamic emailProprio;
   dynamic idCrmExterno;
   dynamic maxInsercaoDia;
   bool? habilitaQrcodeCheckin;
