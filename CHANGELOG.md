@@ -58,3 +58,6 @@
 ## 1.0.19
 * Corrigindo conversoes.
 
+## 1.0.20
+* Adicionando configuracao da mascara de campo.
+

@@ -89,6 +89,7 @@ class Configuracoes {
   bool? habilitarInsercaoNfce;
   dynamic quantidadeSelos;
   String? configuracaoAutomatica;
+  String? documentoUsado;
   List<CamposAdicionais>? camposAdicionais;
 
   Configuracoes.fromJson(Map<String, dynamic> json) {
@@ -183,6 +184,7 @@ class Configuracoes {
     appCartaoFidelidade = json['app_cartao_fidelidade'];
     quantidadeSelos = json['quantidade_selos'] ?? 0;
     configuracaoAutomatica = json['configuracao_automatica'];
+    documentoUsado = json['documento_usado'];
     habilitarInsercaoNfce = json['habilitar_insercao_nfce'];
     if (json['campos_adicionais'] != null) {
       camposAdicionais = <CamposAdicionais>[];
