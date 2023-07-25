@@ -19,6 +19,7 @@ void main() {
     test("Deve atualizar um usuario", () async {
       var userData = UserModel.fromJson(jsonDecode(userDataJson));
       userData.client?.senha = "123";
+      userData.client?.camposAdicionais?.texto['865'] = 'teste';
 
       when(
         () => findEstablishmentByIdMock.currentId(),
@@ -36,6 +37,7 @@ void main() {
         user: userData.client!,
       );
       expect(response, isNotNull);
+      expect(userData.client?.camposAdicionais?.texto['865'], 'teste');
     });
     test("Deve falhar ao atualizar um usuario", () async {
       var userData = UserModel.fromJson(jsonDecode(userDataJson));

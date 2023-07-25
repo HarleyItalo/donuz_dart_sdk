@@ -34,6 +34,7 @@ void main() {
           UserModel.fromJson(jsonDecode(userDataJson)).client);
       var response = await getUser();
       expect(response, isNotNull);
+      expect(response?.camposAdicionais, isNotNull);
     });
 
     test("Deve buscar o usuario sem campos adicionais", () async {

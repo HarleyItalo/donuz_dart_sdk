@@ -61,3 +61,6 @@
 ## 1.0.20
 * Adicionando configuracao da mascara de campo.
 
+## 1.0.21
+* Correçao da conversao dos campos adicionais.
+

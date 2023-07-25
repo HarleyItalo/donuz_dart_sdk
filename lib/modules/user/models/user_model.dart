@@ -44,7 +44,7 @@ class User {
   String? senha;
   String? confirmacaoSenha;
   Categoria? categoria;
-  CamposAdicionais? camposAdicionais;
+  CamposAdicionais? camposAdicionais = CamposAdicionais();
 
   User(
       {idCliente,
@@ -177,6 +177,7 @@ class CamposAdicionais {
   Map<dynamic, dynamic> select = <dynamic, dynamic>{};
   Map<dynamic, dynamic> checkbox = <dynamic, dynamic>{};
   Map<dynamic, dynamic> data = <dynamic, dynamic>{};
+  CamposAdicionais();
 
   CamposAdicionais.fromJson(Map<String, dynamic> json) {
     if (json['text'] != null) {
