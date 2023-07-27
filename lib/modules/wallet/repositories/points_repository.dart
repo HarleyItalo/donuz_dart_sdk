@@ -1,3 +1,5 @@
+import 'package:donuz_dart_sdk/modules/wallet/models/ranking_model.dart';
+
 import '../../common/common_module.dart';
 import '../wallet_module.dart';
 
@@ -32,6 +34,9 @@ abstract class PointsRepository {
   Future<BaseResponseDonuzModel> validadeQrCode({
     required String code,
     required String? tokenClient,
+    required String appId,
+  });
+  Future<RankingModel> findRanking({
     required String appId,
   });
 }
@@ -122,5 +127,14 @@ class PointsRepositoryImpl extends PointsRepository {
         appId: appId,
         tokenCliente: tokenClient);
     return BaseResponseDonuzModel.fromJson(result);
+  }
+
+  @override
+  Future<RankingModel> findRanking({required String appId}) async {
+    var response = await httpService.get(
+      'points/ranking',
+      appId: appId,
+    );
+    return RankingModel.fromJson(response);
   }
 }

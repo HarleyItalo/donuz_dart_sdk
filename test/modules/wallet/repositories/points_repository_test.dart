@@ -8,6 +8,7 @@ import 'package:mocktail/mocktail.dart';
 import '../../../json/wallet/balance_json.dart';
 import '../../../json/wallet/extract_json.dart';
 import '../../../json/wallet/punctuable_code_json.dart';
+import '../../../json/wallet/ranking_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 main() {
@@ -95,5 +96,18 @@ main() {
       );
       expect(response.status, 200);
     });
+    test(
+      'Deve buscar o ranking',
+      () async {
+        when(() => httpServiceMock.get('points/ranking', appId: "2234"))
+            .thenAnswer(
+          (_) async => jsonDecode(rankingJson),
+        );
+        var response = await repository.findRanking(
+          appId: '2234',
+        );
+        expect(response.status, 200);
+      },
+    );
   });
 }

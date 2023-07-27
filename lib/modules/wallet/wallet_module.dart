@@ -1,5 +1,6 @@
 //models
 import 'package:donuz_dart_sdk/modules/base_module.dart';
+import 'package:donuz_dart_sdk/modules/wallet/usercases/find_ranking.dart';
 
 export 'models/balance_model.dart';
 export 'models/point_insert_model.dart';
@@ -22,6 +23,7 @@ class WalletModule extends BaseModule {
   late InsertPoint insertPoint;
   late InsertPunctuableCode insertPunctuableCode;
   late InsertPunctuableQrCode insertPunctuableQRCode;
+  late FindRanking findRanking;
 
   @override
   Future init() async {
@@ -30,6 +32,7 @@ class WalletModule extends BaseModule {
     insertPoint = await instance.getAsync();
     insertPunctuableCode = await instance.getAsync();
     insertPunctuableQRCode = await instance.getAsync();
+    findRanking = await instance.getAsync();
   }
 
   @override
@@ -69,6 +72,12 @@ class WalletModule extends BaseModule {
     instance.registerLazySingletonAsync<InsertPunctuableQrCode>(
       () async => InsertPunctuableQrCodeImpl(
         await instance.getAsync(),
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<FindRanking>(
+      () async => FindRankingImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),
