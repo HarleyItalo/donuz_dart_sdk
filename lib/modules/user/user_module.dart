@@ -1,11 +1,11 @@
 //constants
 import 'package:donuz_dart_sdk/modules/base_module.dart';
-
 export 'constants/login_constants.dart';
 //models
 export 'models/login_model.dart';
 export 'models/user_model.dart';
 export 'models/user_notifications.dart';
+export 'models/upload_user_image_model.dart';
 //repositories
 export 'repositories/login_repository.dart';
 export 'repositories/user_repository.dart';
@@ -22,7 +22,7 @@ export 'usercases/get_user_notifications.dart';
 export 'usercases/mark_as_read_notification.dart';
 export 'usercases/send_sms_before_registration.dart';
 export 'usercases/update_notification_token.dart';
-
+export 'usercases/upload_user_photo.dart';
 import 'user_module.dart';
 
 class UserModule extends BaseModule {
@@ -39,6 +39,7 @@ class UserModule extends BaseModule {
   late GetUserNotifications userNotifications;
   late MarkAsReadNotification markAsReadNotification;
   late UpdateNotificationToken updateNotificationToken;
+  late UploadUserPhoto uploadUserPhoto;
 
   @override
   Future init() async {
@@ -54,6 +55,7 @@ class UserModule extends BaseModule {
     userNotifications = await instance.getAsync();
     markAsReadNotification = await instance.getAsync();
     updateNotificationToken = await instance.getAsync();
+    uploadUserPhoto = await instance.getAsync();
   }
 
   @override
@@ -139,6 +141,13 @@ class UserModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<UpdateNotificationToken>(
       () async => UpdateNotificationTokenImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<UploadUserPhoto>(
+      () async => UploadUserPhotoImpl(
         await instance.getAsync(),
         await instance.getAsync(),
         await instance.getAsync(),

@@ -1,5 +1,6 @@
-import '../../common/common_module.dart';
+import 'dart:io';
 
+import '../../common/common_module.dart';
 import '../user_module.dart';
 
 abstract class UserRepository {
@@ -38,6 +39,8 @@ abstract class UserRepository {
     required String notificationId,
     required String appId,
   });
+  Future<UploadUserImageModel> uploadImage(
+      {required File image, String? tokenClient, required String appId});
 }
 
 class UserRepositoryImpl extends UserRepository {
@@ -149,5 +152,16 @@ class UserRepositoryImpl extends UserRepository {
     var response = BaseResponseDonuzModel.fromJson(result);
 
     return (response.status == 200);
+  }
+
+  @override
+  Future<UploadUserImageModel> uploadImage(
+      {required File image, String? tokenClient, required String appId}) async {
+    var response = await httpService.sendFile(
+      image,
+      tokenCliente: tokenClient,
+      appId: appId,
+    );
+    return UploadUserImageModel.fromJson(response);
   }
 }

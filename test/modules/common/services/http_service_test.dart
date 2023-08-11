@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 
+import '../../../json/default_response_json.dart';
 import '../../../mocks/common/base_config_mock.dart';
 import '../../../mocks/common/fake_uri_mock.dart';
 import '../../../mocks/common/http_client_mock.dart';
+import '../../../mocks/common/services/http_service_mock.dart';
 
 void main() {
   http.Client clientMock = HttpClientMock();
@@ -14,6 +18,7 @@ void main() {
 
   setUpAll(() {
     registerFallbackValue(FakeUriMock());
+    registerFallbackValue(FakeMultipartRequest());
   });
   group("HttpService", () {
     test("Deve realizar um get", () async {
@@ -25,6 +30,32 @@ void main() {
       var response = await httpService.get("");
       expect(response, isNotNull);
       expect(response['status'], 200);
+    });
+    test("Deve enviar um arquivo", () async {
+      when(
+        () => clientMock.send(any(
+            that: isA<MultipartRequest>()
+                .having((p0) => p0.files.length, 'has all files', 1))),
+      ).thenAnswer(
+        (_) async =>
+            StreamedResponse(Stream.value(defaultResponseJson.codeUnits), 200),
+      );
+      var response = await httpService.sendFile(File('assets/files/test.png'));
+      expect(response, isNotNull);
+      expect(response['status'], 200);
+    });
+    test("Deve falhar ao enviar um arquivo", () async {
+      when(
+        () => clientMock.send(any(
+            that: isA<MultipartRequest>()
+                .having((p0) => p0.files.length, 'has all files', 1))),
+      ).thenAnswer(
+        (_) async =>
+            StreamedResponse(Stream.value(defaultResponseJson.codeUnits), 200),
+      );
+      var response = await httpService.sendFile(File(''));
+      expect(response, isNotNull);
+      expect(response['status'], null);
     });
     test("Deve falhar a fazer um get", () async {
       when(

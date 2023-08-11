@@ -19,11 +19,13 @@ class Ranking {
   int? clienteId;
   String? primeiroNome;
   dynamic pontuacaoAnual;
+  String? foto;
 
   Ranking.fromJson(Map<String, dynamic> json) {
     position = json['position'];
     clienteId = json['cliente_id'];
     primeiroNome = json['primeiro_nome'];
     pontuacaoAnual = json['pontuacao_anual'];
+    foto = json['foto'];
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../json/default_response_json.dart';
 import '../../../json/wallet/balance_json.dart';
 import '../../../json/wallet/extract_json.dart';
 import '../../../json/wallet/punctuable_code_json.dart';
@@ -104,6 +105,29 @@ main() {
           (_) async => jsonDecode(rankingJson),
         );
         var response = await repository.findRanking(
+          appId: '2234',
+        );
+        expect(response.status, 200);
+      },
+    );
+    test(
+      'Deve fazer uma transferência',
+      () async {
+        when(() => httpServiceMock.post(
+              '/points/donate',
+              {
+                "valor": 10,
+                "cpf": '12345678909',
+                "cpf_origem": '0123456789',
+              },
+              appId: '2234',
+            )).thenAnswer(
+          (_) async => jsonDecode(defaultResponseJson),
+        );
+        var response = await repository.trasnfer(
+          destination: '12345678909',
+          source: '0123456789',
+          value: 10,
           appId: '2234',
         );
         expect(response.status, 200);

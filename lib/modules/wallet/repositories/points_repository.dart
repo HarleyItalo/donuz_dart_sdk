@@ -39,6 +39,13 @@ abstract class PointsRepository {
   Future<RankingModel> findRanking({
     required String appId,
   });
+
+  Future<BaseResponseDonuzModel> trasnfer({
+    required String source,
+    required String destination,
+    required String appId,
+    required double value,
+  });
 }
 
 class PointsRepositoryImpl extends PointsRepository {
@@ -136,5 +143,24 @@ class PointsRepositoryImpl extends PointsRepository {
       appId: appId,
     );
     return RankingModel.fromJson(response);
+  }
+
+  @override
+  Future<BaseResponseDonuzModel> trasnfer({
+    required String source,
+    required String destination,
+    required double value,
+    required String appId,
+  }) async {
+    var response = await httpService.post(
+      '/points/donate',
+      {
+        "valor": value,
+        "cpf": destination,
+        "cpf_origem": source,
+      },
+      appId: appId,
+    );
+    return BaseResponseDonuzModel.fromJson(response);
   }
 }

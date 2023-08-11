@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:donuz_dart_sdk/modules/user/user_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -133,6 +134,24 @@ void main() async {
       expect(response, isNotNull);
       expect(response, true);
     });
-    //
+    test("Deve fazer o upload de uma imagem", () async {
+      var file = File('assets/files/test.png');
+      when(
+        () => httpService.sendFile(
+          file,
+          tokenCliente: '123',
+          appId: "2234",
+        ),
+      ).thenAnswer(
+        (_) async => jsonDecode(defaultResponseJson),
+      );
+      var response = await userRepository.uploadImage(
+        image: file,
+        appId: "2234",
+        tokenClient: '123',
+      );
+      expect(response, isNotNull);
+      expect(response.status, 200);
+    });
   });
 }

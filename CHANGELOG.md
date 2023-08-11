@@ -64,3 +64,6 @@
 ## 1.0.21
 * Correçao da conversao dos campos adicionais.
 
+## 1.0.22
+* Adicionando ranking, e upload de imagem de cliente.
+
