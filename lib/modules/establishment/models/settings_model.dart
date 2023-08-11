@@ -89,6 +89,7 @@ class Configuracoes {
   bool? habilitarInsercaoNfce;
   dynamic quantidadeSelos;
   String? configuracaoAutomatica;
+  bool? ranking;
   String? documentoUsado;
   List<CamposAdicionais>? camposAdicionais;
 
@@ -185,6 +186,7 @@ class Configuracoes {
     quantidadeSelos = json['quantidade_selos'] ?? 0;
     configuracaoAutomatica = json['configuracao_automatica'];
     documentoUsado = json['documento_usado'];
+    ranking = json['ranking'];
     habilitarInsercaoNfce = json['habilitar_insercao_nfce'];
     if (json['campos_adicionais'] != null) {
       camposAdicionais = <CamposAdicionais>[];

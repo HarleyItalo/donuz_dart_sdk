@@ -67,3 +67,6 @@
 ## 1.0.22
 * Adicionando ranking, e upload de imagem de cliente.
 
+## 1.0.23
+* Adicionando campo do ranking na configuracao.
+
