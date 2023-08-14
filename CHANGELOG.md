@@ -70,3 +70,6 @@
 ## 1.0.23
 * Adicionando campo do ranking na configuracao.
 
+## 1.0.24
+* Adicionando o push token no login.
+

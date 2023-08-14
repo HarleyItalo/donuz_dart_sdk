@@ -7,6 +7,7 @@ abstract class LoginRepository {
     required String appId,
     required String username,
     required String password,
+    String? playerId,
   });
   Future<String?> rememberPassword({
     required String email,

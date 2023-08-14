@@ -5,6 +5,7 @@ abstract class MakeLogin {
   Future<LoginModel?> call({
     required String username,
     required String password,
+    String? playerId,
   });
 }
 
@@ -17,6 +18,7 @@ class MakeLoginImpl extends MakeLogin {
   Future<LoginModel?> call({
     required String username,
     required String password,
+    String? playerId,
   }) async {
     if (username.isEmpty || password.isEmpty) {
       return null;
@@ -31,6 +33,7 @@ class MakeLoginImpl extends MakeLogin {
       username: username,
       password: password,
       appId: appId,
+      playerId: playerId,
     );
   }
 }
