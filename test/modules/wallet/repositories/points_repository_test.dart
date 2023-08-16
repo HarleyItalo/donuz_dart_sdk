@@ -124,7 +124,7 @@ main() {
             )).thenAnswer(
           (_) async => jsonDecode(defaultResponseJson),
         );
-        var response = await repository.trasnfer(
+        var response = await repository.transfer(
           destination: '12345678909',
           source: '0123456789',
           value: 10,

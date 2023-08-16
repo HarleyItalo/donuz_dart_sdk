@@ -40,7 +40,7 @@ abstract class PointsRepository {
     required String appId,
   });
 
-  Future<BaseResponseDonuzModel> trasnfer({
+  Future<BaseResponseDonuzModel> transfer({
     required String source,
     required String destination,
     required String appId,
@@ -146,7 +146,7 @@ class PointsRepositoryImpl extends PointsRepository {
   }
 
   @override
-  Future<BaseResponseDonuzModel> trasnfer({
+  Future<BaseResponseDonuzModel> transfer({
     required String source,
     required String destination,
     required double value,

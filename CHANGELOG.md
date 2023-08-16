@@ -73,3 +73,6 @@
 ## 1.0.24
 * Adicionando o push token no login.
 
+## 1.0.25
+* Transferencia de pontos.
+
