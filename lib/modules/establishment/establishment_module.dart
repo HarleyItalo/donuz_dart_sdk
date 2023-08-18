@@ -5,11 +5,13 @@ export 'models/banners_model.dart';
 export 'models/regulation_model.dart';
 export 'models/establishment_model.dart';
 export 'models/settings_model.dart';
+export 'models/branchs_model.dart';
 // repositories
 export 'repositories/banner_repository.dart';
 export 'repositories/establishment_repository.dart';
 export 'repositories/regulation_repository.dart';
 export 'repositories/settings_repository.dart';
+export 'repositories/branch_repository.dart';
 // user cases
 export 'usercases/find_establishment_by_id.dart';
 export 'usercases/find_establishment_banners.dart';
@@ -19,6 +21,7 @@ export 'usercases/search_by_name.dart';
 export 'usercases/search_my_locales.dart';
 export 'usercases/get_establishment_settings.dart';
 export 'usercases/search_by_slug.dart';
+export 'usercases/get_branchs.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'establishment_module.dart';
@@ -32,6 +35,7 @@ class EstablismentModule extends BaseModule {
   late SearchByName searchByName;
   late SearchMyLocales searchMyLocales;
   late SearchBySlug searchBySlug;
+  late GetBranchs findBranchs;
 
   EstablismentModule({required super.instance});
 
@@ -57,6 +61,11 @@ class EstablismentModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<SettingsRepository>(
       () async => SettingsRepositoryImpl(
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<BranchRepository>(
+      () async => BranchRepositoryImpl(
         await instance.getAsync(),
       ),
     );
@@ -107,6 +116,12 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<GetBranchs>(
+      () async => GetBranchsImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -119,5 +134,6 @@ class EstablismentModule extends BaseModule {
     getRegulation = await instance.getAsync();
     searchMyLocales = await instance.getAsync();
     searchBySlug = await instance.getAsync();
+    findBranchs = await instance.getAsync();
   }
 }

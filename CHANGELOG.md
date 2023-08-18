@@ -76,3 +76,6 @@
 ## 1.0.25
 * Transferencia de pontos.
 
+## 1.0.26
+* Busca de filiais.
+
