@@ -1,11 +1,10 @@
+export 'package:donuz_dart_sdk/modules/base_module.dart';
 //models
-import 'package:donuz_dart_sdk/modules/base_module.dart';
-import 'package:donuz_dart_sdk/modules/wallet/usercases/find_ranking.dart';
-import 'package:donuz_dart_sdk/modules/wallet/usercases/transfer.dart';
-
 export 'models/balance_model.dart';
 export 'models/point_insert_model.dart';
 export 'models/points_model.dart';
+export 'models/points_rules.dart';
+export 'models/ranking_model.dart';
 //repositories
 export 'repositories/points_repository.dart';
 //usercases
@@ -14,6 +13,9 @@ export 'usercases/get_point_extract.dart';
 export 'usercases/insert_point.dart';
 export 'usercases/insert_punctuable_code.dart';
 export 'usercases/insert_punctuable_qr_code.dart';
+export 'usercases/get_rules_point.dart';
+export 'usercases/transfer.dart';
+export 'usercases/find_ranking.dart';
 
 import 'wallet_module.dart';
 

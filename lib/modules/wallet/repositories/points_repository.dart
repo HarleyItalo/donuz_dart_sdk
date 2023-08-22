@@ -1,5 +1,3 @@
-import 'package:donuz_dart_sdk/modules/wallet/models/ranking_model.dart';
-
 import '../../common/common_module.dart';
 import '../wallet_module.dart';
 
@@ -37,6 +35,9 @@ abstract class PointsRepository {
     required String appId,
   });
   Future<RankingModel> findRanking({
+    required String appId,
+  });
+  Future<PointsRulesModel> getPointsRule({
     required String appId,
   });
 
@@ -162,5 +163,11 @@ class PointsRepositoryImpl extends PointsRepository {
       appId: appId,
     );
     return BaseResponseDonuzModel.fromJson(response);
+  }
+
+  @override
+  Future<PointsRulesModel> getPointsRule({required String appId}) async {
+    var json = await httpService.get('points/rules', appId: appId);
+    return PointsRulesModel.fromJson(json);
   }
 }

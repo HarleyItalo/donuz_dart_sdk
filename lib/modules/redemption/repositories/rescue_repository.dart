@@ -10,6 +10,12 @@ abstract class RescueRepository {
     required String appId,
     required String tokenCliente,
   });
+  Future<RescueModel> changeVoucherStatus({
+    required int idRedeemption,
+    required String newStatus,
+    required String appId,
+    String? adminUserID,
+  });
 }
 
 class RescueRepositoryImpl extends RescueRepository {
@@ -40,5 +46,24 @@ class RescueRepositoryImpl extends RescueRepository {
     var response = await httpService.post("redeemptions", data,
         tokenCliente: tokenCliente, appId: appId);
     return RescueModel.fromJson(response);
+  }
+
+  @override
+  Future<RescueModel> changeVoucherStatus({
+    required int idRedeemption,
+    required String newStatus,
+    required String appId,
+    String? adminUserID,
+  }) async {
+    var json = await httpService.put(
+      "voucher",
+      {
+        "id_pedido": idRedeemption,
+        "status": newStatus,
+        "usuario_id": adminUserID
+      },
+      appId: appId,
+    );
+    return RescueModel.fromJson(json);
   }
 }

@@ -6,6 +6,7 @@ export 'models/regulation_model.dart';
 export 'models/establishment_model.dart';
 export 'models/settings_model.dart';
 export 'models/branchs_model.dart';
+export 'models/admin_model.dart';
 // repositories
 export 'repositories/banner_repository.dart';
 export 'repositories/establishment_repository.dart';
@@ -22,6 +23,7 @@ export 'usercases/search_my_locales.dart';
 export 'usercases/get_establishment_settings.dart';
 export 'usercases/search_by_slug.dart';
 export 'usercases/get_branchs.dart';
+export 'usercases/establishment_login.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'establishment_module.dart';
@@ -36,6 +38,7 @@ class EstablismentModule extends BaseModule {
   late SearchMyLocales searchMyLocales;
   late SearchBySlug searchBySlug;
   late GetBranchs findBranchs;
+  late EstablismentLogin login;
 
   EstablismentModule({required super.instance});
 
@@ -122,6 +125,11 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<EstablismentLogin>(
+      () async => EstablismentLoginImpl(
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -135,5 +143,6 @@ class EstablismentModule extends BaseModule {
     searchMyLocales = await instance.getAsync();
     searchBySlug = await instance.getAsync();
     findBranchs = await instance.getAsync();
+    login = await instance.getAsync();
   }
 }

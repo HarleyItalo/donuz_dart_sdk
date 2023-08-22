@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/find_establishment_by_id.dart';
 import 'package:donuz_dart_sdk/modules/user/models/user_model.dart';
 import 'package:donuz_dart_sdk/modules/user/usercases/get_user.dart';
-import 'package:donuz_dart_sdk/modules/wallet/usercases/transfer.dart';
 import 'package:donuz_dart_sdk/modules/wallet/wallet_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

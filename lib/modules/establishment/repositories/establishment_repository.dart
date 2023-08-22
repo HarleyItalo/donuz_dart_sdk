@@ -1,3 +1,5 @@
+import 'package:donuz_dart_sdk/modules/establishment/models/admin_model.dart';
+
 import '../../common/common_module.dart';
 import '../constants/establishiment_constants.dart';
 import '../models/establishment_model.dart';
@@ -6,6 +8,7 @@ abstract class EstablishimentRepository {
   Future<List<Estabelecimento>> findByLocation(
       LocationCoordinates currentLocation);
   Future<List<Estabelecimento>> findByName(String name);
+  Future<AdminModel> login(String username, String password);
   Future<Estabelecimento?> findById(String id);
   Future<List<Estabelecimento>> findMyLocals(String token);
   Future<List<Estabelecimento>> findBySlug(String slug);
@@ -73,5 +76,14 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
     );
     var establishments = EstabelishmentModel.fromJson(json).estabelecimentos;
     return establishments;
+  }
+
+  @override
+  Future<AdminModel> login(String username, String password) async {
+    var json = await httpService.post("estabelishment/login", {
+      "login": username,
+      "senha": password,
+    });
+    return AdminModel.fromJson(json);
   }
 }

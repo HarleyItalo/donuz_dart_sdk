@@ -1,5 +1,4 @@
-import 'package:donuz_dart_sdk/modules/establishment/usercases/find_establishment_by_id.dart';
-import 'package:donuz_dart_sdk/modules/wallet/models/ranking_model.dart';
+import '../../establishment/establishment_module.dart';
 import '../wallet_module.dart';
 
 abstract class FindRanking {
