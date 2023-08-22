@@ -1,17 +1,17 @@
 class Filial {
   int? idfilial;
   String? filial;
-  String? cnpj;
+  dynamic cnpj;
   String? logo;
   String? email;
-  String? telefone;
+  dynamic telefone;
   String? endereco;
-  String? numero;
+  dynamic numero;
   String? complemento;
   String? bairro;
   String? cidade;
   String? estado;
-  String? cep;
+  dynamic cep;
   String? descricao;
   Filial.fromJson(Map<String, dynamic> json) {
     idfilial = json['id_filial'];
