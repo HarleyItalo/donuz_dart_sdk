@@ -79,3 +79,6 @@
 ## 1.0.26
 * Busca de filiais.
 
+## 1.0.27
+* Correcao busca de filiais, login estabelecimento, regra de pontos, troca de status de voucher
+
