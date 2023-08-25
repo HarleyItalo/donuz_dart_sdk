@@ -27,8 +27,11 @@ class RescueRepositoryImpl extends RescueRepository {
   @override
   Future<List<Rescue>?> getRescuesFromClient(
       {required String tokenCliente, required String appId}) async {
-    var json = await httpService.get("redeemptions",
-        appId: appId, tokenCliente: tokenCliente);
+    var json = await httpService.get(
+      "redeemptions",
+      appId: appId,
+      tokenCliente: tokenCliente,
+    );
     var resgates = RescueModel.fromJson(json).resgates;
     return resgates;
   }
@@ -43,8 +46,12 @@ class RescueRepositoryImpl extends RescueRepository {
     var data = <String, dynamic>{};
     data["id_premio"] = idPrize;
     data["quantidade"] = quantity;
-    var response = await httpService.post("redeemptions", data,
-        tokenCliente: tokenCliente, appId: appId);
+    var response = await httpService.post(
+      "redeemptions",
+      data,
+      tokenCliente: tokenCliente,
+      appId: appId,
+    );
     return RescueModel.fromJson(response);
   }
 

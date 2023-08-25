@@ -4,9 +4,11 @@ import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../json/establisment/dashboard_json.dart';
 import '../../../json/establisment/establishment_by_name_json.dart';
 import '../../../json/establisment/establishment_json.dart';
 import '../../../json/establisment/establishments_json.dart';
+import '../../../json/establisment/login_establishment_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 void main() async {
@@ -63,6 +65,16 @@ void main() async {
       },
     );
     test(
+      "Deve buscar os dados de dashboard de um estabelecimento",
+      () async {
+        when(
+          () => httpService.get("dashboard/count", appId: '2234'),
+        ).thenAnswer((_) async => jsonDecode(dashboardJson));
+        var response = await repository.dashboardData("2234");
+        expect(response.status, 200);
+      },
+    );
+    test(
       "Deve retornar uma lista vazia de estabelecimentos",
       () async {
         when(
@@ -80,6 +92,17 @@ void main() async {
         ).thenAnswer((_) async => {});
         var response = await repository.findBySlug("encanto");
         expect(response.isEmpty, true);
+      },
+    );
+    test(
+      "Deve fazer o login de um estabelecimento",
+      () async {
+        when(
+          () => httpService
+              .post("estabelishment/login", {"login": "teste", "senha": "123"}),
+        ).thenAnswer((_) async => jsonDecode(loginEstablismentJson));
+        var response = await repository.login("teste", "123");
+        expect(response.status, 200);
       },
     );
     test(

@@ -10,6 +10,7 @@ import '../../../json/wallet/balance_json.dart';
 import '../../../json/wallet/extract_json.dart';
 import '../../../json/wallet/punctuable_code_json.dart';
 import '../../../json/wallet/ranking_json.dart';
+import '../../../json/wallet/rules_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 main() {
@@ -128,6 +129,19 @@ main() {
           destination: '12345678909',
           source: '0123456789',
           value: 10,
+          appId: '2234',
+        );
+        expect(response.status, 200);
+      },
+    );
+    test(
+      'Deve buscar as regras de pontos',
+      () async {
+        when(() => httpServiceMock.get('points/rules', appId: "2234"))
+            .thenAnswer(
+          (_) async => jsonDecode(rulesJson),
+        );
+        var response = await repository.getPointsRule(
           appId: '2234',
         );
         expect(response.status, 200);

@@ -58,5 +58,23 @@ void main() async {
       expect(response, isNotNull);
       expect(response.rescue, isNotNull);
     });
+    test("Deve atualizar o status de um voucher", () async {
+      when(
+        () => httpService.put(
+          "voucher",
+          {"id_pedido": 123, "status": 'utilizado', "usuario_id": '123'},
+          appId: '2234',
+        ),
+      ).thenAnswer(
+        (_) async => jsonDecode(rescueJson),
+      );
+      var response = await repository.changeVoucherStatus(
+          idRedeemption: 123,
+          newStatus: 'utilizado',
+          appId: "2234",
+          adminUserID: '123');
+      expect(response, isNotNull);
+      expect(response.rescue, isNotNull);
+    });
   });
 }
