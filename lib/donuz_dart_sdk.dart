@@ -5,6 +5,7 @@ import 'package:donuz_dart_sdk/modules/contact/contact_module.dart';
 import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
+import 'package:donuz_dart_sdk/modules/pdv/pdv_module.dart';
 import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
 import 'package:donuz_dart_sdk/modules/redemption/redemption_module.dart';
 import 'package:donuz_dart_sdk/modules/user/user_module.dart';
@@ -26,6 +27,7 @@ class DonuzSDK {
   late CouponModule coupon;
   late ContactModule contact;
   late AppModule app;
+  late PdvModule pdv;
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -39,20 +41,24 @@ class DonuzSDK {
     coupon = CouponModule(instance: _serviceLocator);
     contact = ContactModule(instance: _serviceLocator);
     app = AppModule(instance: _serviceLocator);
+    pdv = PdvModule(instance: _serviceLocator);
   }
   init() async {
-    await Future.wait([
-      establisment.init(),
-      user.init(),
-      user.init(),
-      prizes.init(),
-      wallet.init(),
-      redemption.init(),
-      feedback.init(),
-      gift.init(),
-      coupon.init(),
-      contact.init(),
-      app.init()
-    ]);
+    await Future.wait(
+      [
+        establisment.init(),
+        user.init(),
+        user.init(),
+        prizes.init(),
+        wallet.init(),
+        redemption.init(),
+        feedback.init(),
+        gift.init(),
+        coupon.init(),
+        contact.init(),
+        app.init(),
+        pdv.init(),
+      ],
+    );
   }
 }

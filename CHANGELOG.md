@@ -82,3 +82,5 @@
 ## 1.0.27
 * Correcao busca de filiais, login estabelecimento, regra de pontos, troca de status de voucher
 
+## 1.0.28
+* Busca de configracoes do pdv.
