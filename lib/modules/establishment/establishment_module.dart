@@ -27,6 +27,7 @@ export 'usercases/establishment_login.dart';
 export 'usercases/dashboard_info.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
+import 'package:donuz_dart_sdk/modules/establishment/usercases/locate_branch_with_code.dart';
 import 'establishment_module.dart';
 
 class EstablismentModule extends BaseModule {
@@ -41,6 +42,7 @@ class EstablismentModule extends BaseModule {
   late GetBranchs findBranchs;
   late EstablismentLogin login;
   late DashboardInfo dashboardInfo;
+  late LocateBranchWithCode locateBranchWithCode;
 
   EstablismentModule({required super.instance});
 
@@ -138,6 +140,12 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<LocateBranchWithCode>(
+      () async => LocateBranchWithCodeImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -153,5 +161,6 @@ class EstablismentModule extends BaseModule {
     findBranchs = await instance.getAsync();
     login = await instance.getAsync();
     dashboardInfo = await instance.getAsync();
+    locateBranchWithCode = await instance.getAsync();
   }
 }
