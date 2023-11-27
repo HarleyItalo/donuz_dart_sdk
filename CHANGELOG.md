@@ -84,3 +84,6 @@
 
 ## 1.0.28
 * Busca de configracoes do pdv.
+
+## 1.0.29
+* Busca usuario de filial por codigo de usuario.
