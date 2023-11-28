@@ -22,7 +22,7 @@ class LocateBranchWithCodeImpl extends LocateBranchWithCode {
       return null;
     }
     var result =
-        await _repository.locateBranchWithCode(code: '123', appId: currentId);
+        await _repository.locateBranchWithCode(code: code, appId: currentId);
     return result.usuarioFilial;
   }
 }

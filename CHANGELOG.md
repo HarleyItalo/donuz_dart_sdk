@@ -87,3 +87,6 @@
 
 ## 1.0.29
 * Busca usuario de filial por codigo de usuario.
+
+## 1.0.30
+* fix busca de filial.
