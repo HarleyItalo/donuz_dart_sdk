@@ -2,7 +2,7 @@ class FeedbackModel {
   int? status;
   String? mensagem;
   int? total;
-  String? idEstabelecimento;
+  int? idEstabelecimento;
   String? estabelecimento;
   String? logo;
   Pesquisa? pesquisa;
@@ -20,10 +20,10 @@ class FeedbackModel {
 }
 
 class Pesquisa {
-  String? id;
+  int? id;
   String? titulo;
   String? pts;
-  String? delay;
+  dynamic delay;
   String? hash;
   bool? respondida;
   int? totalPerguntas;
@@ -47,7 +47,7 @@ class Pesquisa {
 }
 
 class Perguntas {
-  String? id;
+  int? id;
   String? pergunta;
   String? tipo;
   List<Alternativas>? alternativas;
@@ -66,8 +66,8 @@ class Perguntas {
 }
 
 class Alternativas {
-  String? idPesquisaAlternativa;
-  String? idPergunta;
+  int? idPesquisaAlternativa;
+  int? idPergunta;
   String? valor;
   Alternativas.fromJson(Map<String, dynamic> json) {
     idPesquisaAlternativa = json['id_pesquisa_alternativa'];

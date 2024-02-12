@@ -93,3 +93,6 @@
 
 ## 1.0.31
 * Trocando o endpoint de chamada de pesquisas.
+
+## 1.0.32
+* Fix data types.
