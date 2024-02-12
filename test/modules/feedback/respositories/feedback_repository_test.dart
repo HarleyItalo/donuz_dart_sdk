@@ -17,11 +17,8 @@ void main() {
       'Deve retornar uma pesquisa',
       () async {
         when(
-          () => httpServiceMock.post("${config.donuzApiV1}pesquisa",
-              {"acao": "buscar", "estabelecimento_id": '2234'},
-              headers: {"token": config.donuzToken},
-              useDonuzToken: false,
-              tokenCliente: 'accessAdmin'),
+          () => httpServiceMock.get("pesquisa",
+              appId: "2234", tokenCliente: 'accessAdmin'),
         ).thenAnswer(
           (_) async => jsonDecode(findFeedbackJson),
         );
@@ -37,8 +34,9 @@ void main() {
         hash: 'dnz99p', respostas: [Respostas(idPergunta: '1', resposta: 'a')]);
     when(
       () => httpServiceMock.post(
-          "${config.donuzApiV1}pesquisa", answerQuestion.toJson(),
-          headers: {"token": config.donuzToken}, useDonuzToken: false),
+        "search",
+        answerQuestion.toJson(),
+      ),
     ).thenAnswer(
       (_) async => jsonDecode(defaultResponseJson),
     );

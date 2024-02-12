@@ -90,3 +90,6 @@
 
 ## 1.0.30
 * fix busca de filial.
+
+## 1.0.31
+* Trocando o endpoint de chamada de pesquisas.

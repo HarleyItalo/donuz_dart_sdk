@@ -17,15 +17,9 @@ class FeedbackRepositoryImpl extends FeedbackRepository {
 
   @override
   Future<FeedbackModel?> findFeedback({required String appId}) async {
-    var response = await httpService.post(
-      "${config.donuzApiV1}pesquisa",
-      {"acao": "buscar", "estabelecimento_id": appId},
-      headers: {
-        "token": config.donuzToken,
-      },
-      tokenCliente: 'accessAdmin',
-      useDonuzToken: false,
-    );
+    var response = await httpService.get("pesquisa",
+        appId: appId, tokenCliente: 'accessAdmin');
+
     return FeedbackModel.fromJson(response);
   }
 
@@ -33,12 +27,8 @@ class FeedbackRepositoryImpl extends FeedbackRepository {
   Future<BaseResponseDonuzModel> responseFeedback(
       {required AnswerQuestionModel answerQuestion}) async {
     var response = await httpService.post(
-      "${config.donuzApiV1}pesquisa",
+      "search",
       answerQuestion.toJson(),
-      headers: {
-        "token": config.donuzToken,
-      },
-      useDonuzToken: false,
     );
     return BaseResponseDonuzModel.fromJson(response);
   }
