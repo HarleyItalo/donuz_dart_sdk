@@ -32,6 +32,20 @@ main() {
       expect(response, isNotNull);
       expect(response.saldo, "0,00");
     });
+    test("Deve retornar o saldo do cliente por id", () async {
+      when(
+        () => httpServiceMock.get(
+          "client/balance/123",
+          appId: '2234',
+        ),
+      ).thenAnswer(
+        (_) async => jsonDecode(balanceJson),
+      );
+      var response =
+          await repository.getBalanceById(appId: "2234", clientId: '123');
+      expect(response, isNotNull);
+      expect(response.saldo, "0,00");
+    });
     test("Deve retornar o extrato do cliente", () async {
       when(
         () => httpServiceMock.get(

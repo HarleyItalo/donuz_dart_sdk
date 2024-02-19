@@ -96,3 +96,6 @@
 
 ## 1.0.32
 * Fix data types.
+
+## 1.0.33
+* Adding get balance with clientId.

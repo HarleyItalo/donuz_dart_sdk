@@ -22,6 +22,11 @@ abstract class PointsRepository {
     required String? tokenClient,
   });
 
+  Future<BalanceModel> getBalanceById({
+    required String appId,
+    required String clientId,
+  });
+
   Future<BaseResponseDonuzModel> validadePunctuableCode({
     required String code,
     required String? tokenClient,
@@ -169,5 +174,15 @@ class PointsRepositoryImpl extends PointsRepository {
   Future<PointsRulesModel> getPointsRule({required String appId}) async {
     var json = await httpService.get('points/rules', appId: appId);
     return PointsRulesModel.fromJson(json);
+  }
+
+  @override
+  Future<BalanceModel> getBalanceById(
+      {required String appId, required String clientId}) async {
+    var result = await httpService.get(
+      "client/balance/$clientId",
+      appId: appId,
+    );
+    return BalanceModel.fromJson(result);
   }
 }
