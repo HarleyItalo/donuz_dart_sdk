@@ -99,3 +99,6 @@
 
 ## 1.0.33
 * Adding get balance with clientId.
+
+## 1.0.34
+* Adding get balance with clientId.

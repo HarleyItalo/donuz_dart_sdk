@@ -16,6 +16,7 @@ export 'usercases/insert_punctuable_qr_code.dart';
 export 'usercases/get_rules_point.dart';
 export 'usercases/transfer.dart';
 export 'usercases/find_ranking.dart';
+export 'usercases/get_balance_by_id.dart';
 
 import 'wallet_module.dart';
 
@@ -28,6 +29,7 @@ class WalletModule extends BaseModule {
   late InsertPunctuableQrCode insertPunctuableQRCode;
   late FindRanking findRanking;
   late Transfer tranfer;
+  late GetBalanceById getBalanceById;
 
   @override
   Future init() async {
@@ -38,12 +40,19 @@ class WalletModule extends BaseModule {
     insertPunctuableQRCode = await instance.getAsync();
     findRanking = await instance.getAsync();
     tranfer = await instance.getAsync();
+    getBalanceById = await instance.getAsync();
   }
 
   @override
   Future injectModule() async {
     instance.registerLazySingletonAsync<PointsRepository>(
       () async => PointsRepositoryImpl(
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<GetBalanceById>(
+      () async => GetBalanceByIdImpl(
+        await instance.getAsync(),
         await instance.getAsync(),
       ),
     );
