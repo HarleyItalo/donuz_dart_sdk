@@ -102,3 +102,6 @@
 
 ## 1.0.34
 * Adding get balance with clientId.
+
+## 1.0.35
+* FIX: get balance with clientId.

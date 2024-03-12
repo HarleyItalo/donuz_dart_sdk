@@ -1,5 +1,5 @@
 class BalanceModel {
-  String? saldo;
+  dynamic saldo;
   String? erro;
 
   BalanceModel.fromJson(Map<String, dynamic> json) {
