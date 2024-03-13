@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
-import 'package:donuz_dart_sdk/modules/wallet/usercases/get_balance_by_id.dart';
 import 'package:donuz_dart_sdk/modules/wallet/wallet_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

@@ -4,6 +4,13 @@ import '../gift_module.dart';
 abstract class GiftsRepository {
   Future<GiftsModel?> findGifts(
       {required String appId, required String tokenCliente});
+
+  Future<BaseResponseDonuzModel?> changeGiftStatus({
+    required int giftRedemptionId,
+    required String status,
+    required String appId,
+    int? userId,
+  });
 }
 
 class GiftsRepositoryImpl extends GiftsRepository {
@@ -22,5 +29,23 @@ class GiftsRepositoryImpl extends GiftsRepository {
       tokenCliente: tokenCliente,
     );
     return GiftsModel.fromJson(response);
+  }
+
+  @override
+  Future<BaseResponseDonuzModel?> changeGiftStatus({
+    required int giftRedemptionId,
+    required String status,
+    required String appId,
+    int? userId,
+  }) async {
+    var data = {
+      "id_presente": giftRedemptionId,
+      "status": status,
+      "usuario_id": userId
+    };
+
+    var response = await httpService.put("gift", data, appId: appId);
+
+    return BaseResponseDonuzModel.fromJson(response);
   }
 }
