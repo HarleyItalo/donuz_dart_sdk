@@ -1,5 +1,5 @@
 import 'package:donuz_dart_sdk/modules/establishment/models/admin_model.dart';
-import 'package:donuz_dart_sdk/modules/establishment/models/dashboard_info.dart';
+import 'package:donuz_dart_sdk/modules/establishment/models/dashboard_model.dart';
 
 import '../../common/common_module.dart';
 import '../constants/establishiment_constants.dart';
@@ -11,7 +11,7 @@ abstract class EstablishimentRepository {
   Future<List<Estabelecimento>> findByName(String name);
   Future<AdminModel> login(String username, String password);
   Future<Estabelecimento?> findById(String id);
-  Future<DashboardInfoModel> dashboardData(String appId);
+  Future<DashboardModel> dashboardData(String appId);
   Future<List<Estabelecimento>> findMyLocals(String token);
   Future<List<Estabelecimento>> findBySlug(String slug);
 }
@@ -90,8 +90,8 @@ class EstablishimentRepositoryImpl extends EstablishimentRepository {
   }
 
   @override
-  Future<DashboardInfoModel> dashboardData(String appId) async {
+  Future<DashboardModel> dashboardData(String appId) async {
     var json = await httpService.get("dashboard/count", appId: appId);
-    return DashboardInfoModel.fromJson(json);
+    return DashboardModel.fromJson(json);
   }
 }

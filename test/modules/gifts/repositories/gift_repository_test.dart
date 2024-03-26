@@ -25,7 +25,7 @@ void main() {
         () async {
       when(
         () => httpServiceMock.put(
-            'gifts',
+            'gift',
             {
               "id_presente": 123,
               "status": 'utilizado',

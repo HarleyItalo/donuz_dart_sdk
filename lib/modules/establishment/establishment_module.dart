@@ -24,7 +24,7 @@ export 'usercases/get_establishment_settings.dart';
 export 'usercases/search_by_slug.dart';
 export 'usercases/get_branchs.dart';
 export 'usercases/establishment_login.dart';
-export 'usercases/dashboard_info.dart';
+export 'usercases/dashboard_statistics.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/locate_branch_with_code.dart';
@@ -41,7 +41,7 @@ class EstablismentModule extends BaseModule {
   late SearchBySlug searchBySlug;
   late GetBranchs findBranchs;
   late EstablismentLogin login;
-  late DashboardInfo dashboardInfo;
+  late DashboardStatistics dashboardStatistics;
   late LocateBranchWithCode locateBranchWithCode;
 
   EstablismentModule({required super.instance});
@@ -134,8 +134,8 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
-    instance.registerLazySingletonAsync<DashboardInfo>(
-      () async => DashboardInfoImpl(
+    instance.registerLazySingletonAsync<DashboardStatistics>(
+      () async => DashboardStatisticsImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),
@@ -160,7 +160,7 @@ class EstablismentModule extends BaseModule {
     searchBySlug = await instance.getAsync();
     findBranchs = await instance.getAsync();
     login = await instance.getAsync();
-    dashboardInfo = await instance.getAsync();
+    dashboardStatistics = await instance.getAsync();
     locateBranchWithCode = await instance.getAsync();
   }
 }

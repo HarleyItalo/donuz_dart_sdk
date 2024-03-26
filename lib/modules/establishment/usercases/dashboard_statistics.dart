@@ -1,21 +1,21 @@
-import 'package:donuz_dart_sdk/modules/establishment/models/dashboard_info.dart';
+import 'package:donuz_dart_sdk/modules/establishment/models/dashboard_model.dart';
 import '../establishment_module.dart';
 
-abstract class DashboardInfo {
-  Future<DashboardInfoModel?> call();
+abstract class DashboardStatistics {
+  Future<DashboardModel?> call();
 }
 
-class DashboardInfoImpl extends DashboardInfo {
+class DashboardStatisticsImpl extends DashboardStatistics {
   final EstablishimentRepository _repository;
   final FindEstablishmentById _findEstablishmentById;
 
-  DashboardInfoImpl(
+  DashboardStatisticsImpl(
     this._repository,
     this._findEstablishmentById,
   );
 
   @override
-  Future<DashboardInfoModel?> call() async {
+  Future<DashboardModel?> call() async {
     var appId = await _findEstablishmentById.currentId();
     if (appId == null) {
       return null;
