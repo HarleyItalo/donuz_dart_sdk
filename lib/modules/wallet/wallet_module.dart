@@ -30,6 +30,7 @@ class WalletModule extends BaseModule {
   late FindRanking findRanking;
   late Transfer tranfer;
   late GetBalanceById getBalanceById;
+  late GetPointsRule getPointsRule;
 
   @override
   Future init() async {
@@ -41,6 +42,7 @@ class WalletModule extends BaseModule {
     findRanking = await instance.getAsync();
     tranfer = await instance.getAsync();
     getBalanceById = await instance.getAsync();
+    getPointsRule = await instance.getAsync();
   }
 
   @override
@@ -99,6 +101,12 @@ class WalletModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<FindRanking>(
       () async => FindRankingImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<GetPointsRule>(
+      () async => GetPointsRuleImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),

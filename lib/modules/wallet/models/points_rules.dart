@@ -1,7 +1,7 @@
 class Regra {
   int? idregra;
   String? nomeregra;
-  int? umrealequivale;
+  dynamic umrealequivale;
   int? estabelecimentoid;
   String? arredonda;
   String? tipo;

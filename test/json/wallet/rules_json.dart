@@ -5,7 +5,7 @@ const rulesJson = """{
         {
             "id_regra": 23071,
             "nome_regra": "Rolamento",
-            "um_real_equivale": 2,
+            "um_real_equivale": 0.5,
             "estabelecimento_id": 2234,
             "arredonda": "nao",
             "tipo": "comprar",

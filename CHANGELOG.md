@@ -108,3 +108,12 @@
 
 ## 1.0.36
 * Adicionando request de troca de status de mimo.
+
+## 1.0.37
+* FIX: request de troca de status de mimo Adicionando nova request pra trazer dados da dashboard.
+
+## 1.0.38
+* Adding request of get point rules
+
+## 1.0.39
+* Fix request of get point rules
