@@ -117,3 +117,6 @@
 
 ## 1.0.39
 * Fix request of get point rules
+
+## 1.0.40
+* Adicionado configuracoes personalizadas.

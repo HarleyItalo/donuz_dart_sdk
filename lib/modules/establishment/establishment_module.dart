@@ -27,7 +27,9 @@ export 'usercases/establishment_login.dart';
 export 'usercases/dashboard_statistics.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
+import 'package:donuz_dart_sdk/modules/establishment/usercases/get_custom_config.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/locate_branch_with_code.dart';
+import 'package:donuz_dart_sdk/modules/establishment/usercases/set_custom_config.dart';
 import 'establishment_module.dart';
 
 class EstablismentModule extends BaseModule {
@@ -43,6 +45,8 @@ class EstablismentModule extends BaseModule {
   late EstablismentLogin login;
   late DashboardStatistics dashboardStatistics;
   late LocateBranchWithCode locateBranchWithCode;
+  late SetCustomConfig setCustomConfig;
+  late GetCustomConfig getCustomConfig;
 
   EstablismentModule({required super.instance});
 
@@ -146,6 +150,18 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<GetCustomConfig>(
+      () async => GetCustomConfigImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<SetCustomConfig>(
+      () async => SetCustomConfigImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -162,5 +178,7 @@ class EstablismentModule extends BaseModule {
     login = await instance.getAsync();
     dashboardStatistics = await instance.getAsync();
     locateBranchWithCode = await instance.getAsync();
+    getCustomConfig = await instance.getAsync();
+    setCustomConfig = await instance.getAsync();
   }
 }
