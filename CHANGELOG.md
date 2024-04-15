@@ -120,3 +120,6 @@
 
 ## 1.0.40
 * Adicionado configuracoes personalizadas.
+
+## 1.0.41
+* Adicionado busca de resgates por data

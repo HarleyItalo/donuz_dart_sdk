@@ -1,3 +1,5 @@
+import 'package:donuz_dart_sdk/modules/redemption/models/redemptions_by_date_model.dart';
+
 import '../../common/common_module.dart';
 import '../models/rescue_model.dart';
 
@@ -16,6 +18,8 @@ abstract class RescueRepository {
     required String appId,
     String? adminUserID,
   });
+  Future<RedemptionsByDateModel> redemptionsByDate(
+      {required String appId, required DateTime startDate, int page = 0});
 }
 
 class RescueRepositoryImpl extends RescueRepository {
@@ -72,5 +76,17 @@ class RescueRepositoryImpl extends RescueRepository {
       appId: appId,
     );
     return RescueModel.fromJson(json);
+  }
+
+  @override
+  Future<RedemptionsByDateModel> redemptionsByDate(
+      {required String appId,
+      required DateTime startDate,
+      int page = 0}) async {
+    var json = await httpService.get(
+        "vouchersBydate?initDate=${startDate.year}-${startDate.month}-${startDate.day}&page=$page",
+        appId: appId);
+
+    return RedemptionsByDateModel.fromJson(json);
   }
 }

@@ -11,6 +11,7 @@ export 'usercases/rescue_prize.dart';
 export 'usercases/change_voucher_status.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
+import 'package:donuz_dart_sdk/modules/redemption/usercases/redemption_by_date.dart';
 import 'redemption_module.dart';
 
 class RedemptionModule extends BaseModule {
@@ -19,6 +20,7 @@ class RedemptionModule extends BaseModule {
   late GetAvaliableVouchers getAvaliableVouchers;
   late RescuePrize rescuePrize;
   late ChangeVoucherStatus changeVoucherStatus;
+  late RedemptionsByDate redemptionsByDate;
 
   @override
   Future init() async {
@@ -26,6 +28,7 @@ class RedemptionModule extends BaseModule {
     getAvaliableVouchers = await instance.getAsync();
     rescuePrize = await instance.getAsync();
     changeVoucherStatus = await instance.getAsync();
+    redemptionsByDate = await instance.getAsync();
   }
 
   @override
@@ -56,6 +59,12 @@ class RedemptionModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<ChangeVoucherStatus>(
       () async => ChangeVoucherStatusImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<RedemptionsByDate>(
+      () async => RedemptionsByDateImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),

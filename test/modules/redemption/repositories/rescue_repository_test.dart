@@ -4,6 +4,7 @@ import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:donuz_dart_sdk/modules/redemption/redemption_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import '../../../json/redemptions/redemptions_by_date_json.dart';
 import '../../../json/redemptions/redemptions_json.dart';
 import '../../../json/redemptions/rescue_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
@@ -29,7 +30,7 @@ void main() async {
       expect(response, isNotEmpty);
       expect(response, isA<List<Rescue>>());
     });
-    test("Deve retornar uma lista vazia de premios", () async {
+    test("Deve retornar uma lista vazia de resgates", () async {
       when(() => httpService.get("redeemptions",
           appId: "2234", tokenCliente: "123")).thenAnswer((_) async => {});
 
@@ -53,6 +54,7 @@ void main() async {
       ).thenAnswer(
         (_) async => jsonDecode(rescueJson),
       );
+
       var response = await repository.makeRescue(
           idPrize: 123, quantity: 1, appId: "2234", tokenCliente: "123");
       expect(response, isNotNull);
@@ -68,6 +70,7 @@ void main() async {
       ).thenAnswer(
         (_) async => jsonDecode(rescueJson),
       );
+
       var response = await repository.changeVoucherStatus(
           idRedeemption: 123,
           newStatus: 'utilizado',
@@ -75,6 +78,24 @@ void main() async {
           adminUserID: '123');
       expect(response, isNotNull);
       expect(response.rescue, isNotNull);
+    });
+
+    test("Deve retornar uma lista vazia de resgates por data", () async {
+      var date = DateTime.now();
+      var page = 0;
+      when(
+        () => httpService.get(
+          "vouchersBydate?initDate=${date.year}-${date.month}-${date.day}&page=$page",
+          appId: "2234",
+        ),
+      ).thenAnswer((_) async => jsonDecode(redemptionsByDateJson));
+
+      var response = await repository.redemptionsByDate(
+        startDate: date,
+        appId: "2234",
+        page: page,
+      );
+      expect(response, isNotNull);
     });
   });
 }
