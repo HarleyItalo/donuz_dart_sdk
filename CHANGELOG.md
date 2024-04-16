@@ -123,3 +123,6 @@
 
 ## 1.0.41
 * Adicionado busca de resgates por data
+
+## 1.0.42
+* Adicionado novos campos na requisicao de login.

@@ -30,6 +30,10 @@ class Estabelecimento {
   String? endereco;
   String? slug;
   dynamic telefone;
+  int? idFilial;
+  int? idUsuario;
+  String? nome;
+  String? gmEnderecoCompleto;
 
   Estabelecimento.fromJson(Map<String, dynamic> json) {
     idAdmin = json['id_admin'];
@@ -42,6 +46,10 @@ class Estabelecimento {
     longitude = json['longitude'];
     slug = json['slug'];
     endereco = json['endereco'];
+    gmEnderecoCompleto = json['gm_endereco_completo'];
     telefone = json['telefone'];
+    idFilial = json['id_filial'];
+    idUsuario = json['id_usuario'];
+    nome = json['nome'];
   }
 }
