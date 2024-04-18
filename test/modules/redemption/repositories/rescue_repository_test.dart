@@ -97,5 +97,21 @@ void main() async {
       );
       expect(response, isNotNull);
     });
+    test("Deve retornar um resgate por id", () async {
+      var id = "1";
+
+      when(
+        () => httpService.get(
+          "redeemption/$id",
+          appId: "2234",
+        ),
+      ).thenAnswer((_) async => jsonDecode(rescueJson));
+
+      var response = await repository.getRescueById(
+        id: id,
+        appId: "2234",
+      );
+      expect(response, isNotNull);
+    });
   });
 }

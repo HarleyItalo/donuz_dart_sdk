@@ -6,6 +6,9 @@ import '../models/rescue_model.dart';
 abstract class RescueRepository {
   Future<List<Rescue>?> getRescuesFromClient(
       {required String tokenCliente, required String appId});
+
+  Future<RescueModel> getRescueById(
+      {required String id, required String appId});
   Future<RescueModel> makeRescue({
     required int idPrize,
     required int quantity,
@@ -88,5 +91,15 @@ class RescueRepositoryImpl extends RescueRepository {
         appId: appId);
 
     return RedemptionsByDateModel.fromJson(json);
+  }
+
+  @override
+  Future<RescueModel> getRescueById({
+    required String id,
+    required String appId,
+  }) async {
+    var json = await httpService.get("redeemption/$id", appId: appId);
+
+    return RescueModel.fromJson(json);
   }
 }

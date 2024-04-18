@@ -126,3 +126,7 @@
 
 ## 1.0.42
 * Adicionado novos campos na requisicao de login.
+
+
+## 1.0.43
+* Adicionado a request de busca de vouchers por id.
