@@ -130,3 +130,6 @@
 
 ## 1.0.43
 * Adicionado a request de busca de vouchers por id.
+
+## 1.0.44
+* fix: Trocar o status do voucher.

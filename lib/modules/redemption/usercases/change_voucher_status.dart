@@ -5,7 +5,6 @@ abstract class ChangeVoucherStatus {
   Future<RescueModel?> call({
     required int redeemptionId,
     required String newStatus,
-    required String appId,
   });
 }
 
@@ -21,7 +20,6 @@ class ChangeVoucherStatusImpl extends ChangeVoucherStatus {
   Future<RescueModel?> call(
       {required int redeemptionId,
       required String newStatus,
-      required String appId,
       String? adminUserId}) async {
     var response = await _findEstablishmentById.currentId();
     if (response == null || newStatus.isEmpty) {
@@ -32,7 +30,7 @@ class ChangeVoucherStatusImpl extends ChangeVoucherStatus {
         idRedeemption: redeemptionId,
         newStatus: newStatus,
         adminUserID: adminUserId,
-        appId: appId);
+        appId: response);
 
     return result;
   }

@@ -32,7 +32,6 @@ main() {
       ).thenAnswer(
           (invocation) async => RescueModel.fromJson(jsonDecode(rescueJson)));
       var response = changeVoucherStatus(
-        appId: "2234",
         newStatus: 'utlizado',
         redeemptionId: 1234,
       );
