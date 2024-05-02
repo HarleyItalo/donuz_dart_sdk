@@ -1,5 +1,6 @@
 import 'package:donuz_dart_sdk/modules/base_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/usercases/change_gift_status.dart';
+import 'package:donuz_dart_sdk/modules/gifts/usercases/get_gift_by_id.dart';
 import 'gift_module.dart';
 //models
 export 'models/gifts_model.dart';
@@ -13,11 +14,13 @@ class GiftModule extends BaseModule {
 
   late FindGifts findGifts;
   late ChangeGiftStatus changeGiftStatus;
+  late GetGiftById getGiftById;
 
   @override
   Future init() async {
     findGifts = await instance.getAsync();
     changeGiftStatus = await instance.getAsync();
+    getGiftById = await instance.getAsync();
   }
 
   @override
@@ -36,6 +39,12 @@ class GiftModule extends BaseModule {
     );
     instance.registerSingletonAsync<ChangeGiftStatus>(
       () async => ChangeGiftStatusImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerSingletonAsync<GetGiftById>(
+      () async => GetGiftByIdImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),

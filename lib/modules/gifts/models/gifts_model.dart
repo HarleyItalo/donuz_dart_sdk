@@ -9,6 +9,9 @@ class Presente {
   String? status;
   String? barcode;
   String? qrcode;
+  String? primeiroNome;
+  String? cpf;
+  String? foto;
 
   Presente.fromJson(Map<String, dynamic> json) {
     idpresenteresgate = json['id_presente_resgate'];
@@ -21,6 +24,9 @@ class Presente {
     status = json['status'];
     barcode = json['barcode'];
     qrcode = json['qrcode'];
+    primeiroNome = json['primeiro_nome'];
+    cpf = json['cpf'];
+    foto = json['foto'];
   }
 }
 

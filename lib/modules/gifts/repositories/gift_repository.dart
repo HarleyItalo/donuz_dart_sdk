@@ -2,14 +2,21 @@ import '../../common/common_module.dart';
 import '../gift_module.dart';
 
 abstract class GiftsRepository {
-  Future<GiftsModel?> findGifts(
-      {required String appId, required String tokenCliente});
+  Future<GiftsModel?> findGifts({
+    required String appId,
+    required String tokenCliente,
+  });
 
   Future<BaseResponseDonuzModel?> changeGiftStatus({
     required int giftRedemptionId,
     required String status,
     required String appId,
     int? userId,
+  });
+
+  Future<GiftsModel?> getGiftById({
+    required String appId,
+    required String id,
   });
 }
 
@@ -27,6 +34,16 @@ class GiftsRepositoryImpl extends GiftsRepository {
       'gifts',
       appId: appId,
       tokenCliente: tokenCliente,
+    );
+    return GiftsModel.fromJson(response);
+  }
+
+  @override
+  Future<GiftsModel?> getGiftById(
+      {required String appId, required String id}) async {
+    var response = await httpService.get(
+      'gift/$id',
+      appId: appId,
     );
     return GiftsModel.fromJson(response);
   }

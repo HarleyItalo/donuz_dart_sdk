@@ -133,3 +133,6 @@
 
 ## 1.0.44
 * fix: Trocar o status do voucher.
+
+## 1.0.45
+* corrigindo modelos e adicionando requests de busca de presentes por id.

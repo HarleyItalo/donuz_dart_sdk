@@ -42,6 +42,9 @@ class Rescue {
   dynamic numeroGiftcard;
   dynamic senhaGiftcard;
   dynamic giftcardValue;
+  String? primeiroNome;
+  String? cpf;
+  String? foto;
 
   Rescue.fromJson(Map<String, dynamic> json) {
     idPedido = json['id_pedido'];
@@ -65,5 +68,8 @@ class Rescue {
     numeroGiftcard = json['numero_giftcard'];
     senhaGiftcard = json['senha_giftcard'];
     giftcardValue = json['giftcard_value'];
+    primeiroNome = json['primeiro_nome'];
+    cpf = json['cpf'];
+    foto = json['foto'];
   }
 }
