@@ -136,3 +136,6 @@
 
 ## 1.0.45
 * corrigindo modelos e adicionando requests de busca de presentes por id.
+
+## 1.0.46
+* fix: corrigindo modelos e adicionando requests de busca de presentes por id.

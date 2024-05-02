@@ -35,6 +35,7 @@ class GiftsModel {
   String? mensagem;
   int? total;
   List<Presente?>? presentes;
+  Presente? presente;
 
   GiftsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -45,6 +46,9 @@ class GiftsModel {
       json['presentes'].forEach((v) {
         presentes!.add(Presente.fromJson(v));
       });
+    }
+    if (json["presente"] != null) {
+      presente = Presente.fromJson(json["presente"]);
     }
   }
 }

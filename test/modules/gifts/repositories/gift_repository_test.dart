@@ -6,6 +6,7 @@ import 'package:donuz_dart_sdk/modules/gifts/repositories/gift_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../json/gift/get_gift_by_id_json.dart';
 import '../../../json/gift/get_gifts_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
@@ -21,6 +22,16 @@ void main() {
           await giftsRepository.findGifts(appId: '2234', tokenCliente: '123');
       expect(response, isNotNull);
     });
+
+    test("deve retornar os presentes disponiveis para um usuário", () async {
+      when(
+        () => httpServiceMock.get('gift/123', appId: '2234'),
+      ).thenAnswer((_) async => jsonDecode(getGiftByIdJson));
+      var response =
+          await giftsRepository.getGiftById(appId: '2234', id: '123');
+      expect(response, isNotNull);
+    });
+
     test("deve mudar o status de um presente resgatado para um usuário",
         () async {
       when(
