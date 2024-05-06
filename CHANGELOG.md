@@ -139,3 +139,7 @@
 
 ## 1.0.46
 * fix: corrigindo modelos e adicionando requests de busca de presentes por id.
+
+
+## 1.0.47
+* fix: parametro opcional.

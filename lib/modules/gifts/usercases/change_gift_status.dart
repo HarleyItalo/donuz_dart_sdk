@@ -5,10 +5,11 @@ import 'package:donuz_dart_sdk/modules/gifts/models/gift_status_enum.dart';
 import '../../establishment/establishment_module.dart';
 
 abstract class ChangeGiftStatus {
-  Future<BaseResponseDonuzModel?> call(
-      {required int giftRedemptionId,
-      required GiftStatus status,
-      required int userId});
+  Future<BaseResponseDonuzModel?> call({
+    required int giftRedemptionId,
+    required GiftStatus status,
+    int? userId,
+  });
 }
 
 class ChangeGiftStatusImpl implements ChangeGiftStatus {
