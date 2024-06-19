@@ -26,6 +26,8 @@ class Prize {
   dynamic estoque;
   String? regras;
   String? status;
+  String? tamanho;
+  dynamic solicitarEnderecoEntrega;
 
   Prize.fromJson(Map<String, dynamic> json) {
     idProduto = json['id_produto'];
@@ -40,5 +42,7 @@ class Prize {
     estoque = json['estoque'];
     regras = json['regras'];
     status = json['status'];
+    tamanho = json['tamanho'];
+    solicitarEnderecoEntrega = json["solicitar_endereco_entrega"];
   }
 }

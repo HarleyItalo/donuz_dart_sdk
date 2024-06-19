@@ -147,3 +147,6 @@
 
 ## 1.0.48
 * Adicionando as requests de endereco de entrega. 
+
+## 1.0.49
+* Adicionando mais campos na request de premios. 
