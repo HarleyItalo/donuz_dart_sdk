@@ -10,6 +10,7 @@ export 'models/upload_user_image_model.dart';
 export 'repositories/login_repository.dart';
 export 'repositories/user_repository.dart';
 //usercases
+export 'usercases/get_logged_user_id.dart';
 export 'usercases/get_logged_user_token.dart';
 export 'usercases/make_login.dart';
 export 'usercases/make_logout.dart';
@@ -40,6 +41,7 @@ class UserModule extends BaseModule {
   late MarkAsReadNotification markAsReadNotification;
   late UpdateNotificationToken updateNotificationToken;
   late UploadUserPhoto uploadUserPhoto;
+  late GetLoggedUserId getLoggedUserId;
 
   @override
   Future init() async {
@@ -56,6 +58,7 @@ class UserModule extends BaseModule {
     markAsReadNotification = await instance.getAsync();
     updateNotificationToken = await instance.getAsync();
     uploadUserPhoto = await instance.getAsync();
+    getLoggedUserId = await instance.getAsync();
   }
 
   @override
@@ -73,6 +76,11 @@ class UserModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<GetLoggedUserToken>(
       () async => GetLoggedUserTokenImpl(
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<GetLoggedUserId>(
+      () async => GetLoggedUserIdImpl(
         await instance.getAsync(),
       ),
     );

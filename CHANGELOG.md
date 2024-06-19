@@ -143,3 +143,7 @@
 
 ## 1.0.47
 * fix: parametro opcional.
+
+
+## 1.0.47
+* Adicionando as requests de endereco de entrega. 

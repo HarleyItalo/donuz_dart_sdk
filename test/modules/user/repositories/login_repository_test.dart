@@ -56,6 +56,12 @@ void main() async {
       var response = await loginRepository.getLoggedUserToken();
       expect(response, isNull);
     });
+
+    test("Deve retornar nulo por nao encontrar um userId", () async {
+      var response = await loginRepository.getLoggedUserId();
+      expect(response, isNull);
+    });
+
     test("Deve retornar o token", () async {
       SharedPreferences.setMockInitialValues({loginTokenKey: "token"});
       final storageService =
@@ -63,6 +69,20 @@ void main() async {
       final LoginRepository loginRepository =
           LoginRepositoryImpl(httpService, storageService);
       var response = await loginRepository.getLoggedUserToken();
+      expect(response, isNotNull);
+    });
+
+    test("Deve retornar o userId", () async {
+      SharedPreferences.setMockInitialValues({clientIdKey: "123123"});
+
+      final storageService =
+          StorageService(await SharedPreferences.getInstance());
+
+      final LoginRepository loginRepository =
+          LoginRepositoryImpl(httpService, storageService);
+
+      var response = await loginRepository.getLoggedUserId();
+
       expect(response, isNotNull);
     });
     test("Deve enviar a requisicao de redefinicao de senha", () async {

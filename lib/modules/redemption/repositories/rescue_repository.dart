@@ -9,12 +9,12 @@ abstract class RescueRepository {
 
   Future<RescueModel> getRescueById(
       {required String id, required String appId});
-  Future<RescueModel> makeRescue({
-    required int idPrize,
-    required int quantity,
-    required String appId,
-    required String tokenCliente,
-  });
+  Future<RescueModel> makeRescue(
+      {required int idPrize,
+      required int quantity,
+      required String appId,
+      required String tokenCliente,
+      String? deliveryAddressId});
   Future<RescueModel> changeVoucherStatus({
     required int idRedeemption,
     required String newStatus,
@@ -44,15 +44,16 @@ class RescueRepositoryImpl extends RescueRepository {
   }
 
   @override
-  Future<RescueModel> makeRescue({
-    required int idPrize,
-    required int quantity,
-    required String appId,
-    required String tokenCliente,
-  }) async {
+  Future<RescueModel> makeRescue(
+      {required int idPrize,
+      required int quantity,
+      required String appId,
+      required String tokenCliente,
+      String? deliveryAddressId}) async {
     var data = <String, dynamic>{};
     data["id_premio"] = idPrize;
     data["quantidade"] = quantity;
+    data["endereco_entrega_id"] = deliveryAddressId;
     var response = await httpService.post(
       "redeemptions",
       data,

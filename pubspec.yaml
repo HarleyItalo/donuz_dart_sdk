@@ -1,6 +1,6 @@
 name: donuz_dart_sdk
 description: Donuz Dart SDK to comunicate with Donuz API, Abstracting Logics of login and caching requests, on all avaliable modules exposed in Donuz API.
-version: 1.0.47
+version: 1.0.48
 homepage: https://github.com/HarleyItalo/donuz_dart_sdk
 environment:
   sdk: '>=2.19.2 <4.0.0'
@@ -17,7 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0   
   mocktail:
   
 flutter:

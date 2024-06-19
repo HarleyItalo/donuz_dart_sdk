@@ -3,6 +3,7 @@ import '../user_module.dart';
 
 abstract class LoginRepository {
   Future<String?> getLoggedUserToken();
+  Future<String?> getLoggedUserId();
   Future<LoginModel?> makeLogin({
     required String appId,
     required String username,
@@ -49,6 +50,8 @@ class LoginRepositoryImpl extends LoginRepository {
     if (login.status != 200) {
       return null;
     }
+    storageService.setData(clientIdKey, login.cliente.toString(),
+        serialize: false);
     storageService.setData(loginTokenKey, login.token, serialize: false);
     return login;
   }
@@ -69,5 +72,13 @@ class LoginRepositoryImpl extends LoginRepository {
   @override
   Future<bool> makeLogout() async {
     return await storageService.clearAll();
+  }
+
+  @override
+  Future<String?> getLoggedUserId() async {
+    if (!await storageService.existsKey(clientIdKey)) {
+      return null;
+    }
+    return await storageService.getString(clientIdKey);
   }
 }

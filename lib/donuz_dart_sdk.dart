@@ -3,6 +3,7 @@ library donuz_dart_sdk;
 import 'package:donuz_dart_sdk/modules/app/app_module.dart';
 import 'package:donuz_dart_sdk/modules/contact/contact_module.dart';
 import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
+import 'package:donuz_dart_sdk/modules/delivery_address/delivery_address_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
 import 'package:donuz_dart_sdk/modules/pdv/pdv_module.dart';
@@ -28,6 +29,8 @@ class DonuzSDK {
   late ContactModule contact;
   late AppModule app;
   late PdvModule pdv;
+  late DeliveryAddressModule deliveryAddres;
+
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
@@ -42,6 +45,7 @@ class DonuzSDK {
     contact = ContactModule(instance: _serviceLocator);
     app = AppModule(instance: _serviceLocator);
     pdv = PdvModule(instance: _serviceLocator);
+    deliveryAddres = DeliveryAddressModule(instance: _serviceLocator);
   }
   init() async {
     await Future.wait(
@@ -58,6 +62,7 @@ class DonuzSDK {
         contact.init(),
         app.init(),
         pdv.init(),
+        deliveryAddres.init()
       ],
     );
   }

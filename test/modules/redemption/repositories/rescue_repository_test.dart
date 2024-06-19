@@ -48,6 +48,7 @@ void main() async {
             {
               "id_premio": 123,
               "quantidade": 1,
+              "endereco_entrega_id": null,
             },
             appId: "2234",
             tokenCliente: "123"),

@@ -7,6 +7,7 @@ class Permissoes {
   bool? pedidoListar;
   bool? produtoCadastrar;
   bool? presenteDadoListar;
+  bool? validarVoucher;
   Permissoes.fromJson(Map<String, dynamic> json) {
     whatsapp = json['whatsapp'];
     pushnotification = json['push_notification'];
@@ -14,6 +15,7 @@ class Permissoes {
     pedidoListar = json['pedidoListar'];
     produtoCadastrar = json['produtoCadastrar'];
     presenteDadoListar = json['presenteDadoListar'];
+    validarVoucher = json['validarVoucher'];
   }
 }
 
