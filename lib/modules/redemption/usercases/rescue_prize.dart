@@ -3,10 +3,10 @@ import '../../user/user_module.dart';
 import '../redemption_module.dart';
 
 abstract class RescuePrize {
-  Future<RescueModel?> call({
-    required dynamic idPrize,
-    required dynamic quantity,
-  });
+  Future<RescueModel?> call(
+      {required dynamic idPrize,
+      required dynamic quantity,
+      String? deliveryAddressId});
 }
 
 class RescuePrizeImpl extends RescuePrize {
@@ -23,6 +23,7 @@ class RescuePrizeImpl extends RescuePrize {
   Future<RescueModel?> call({
     required dynamic idPrize,
     required dynamic quantity,
+    String? deliveryAddressId,
   }) async {
     var response = await Future.wait(
       [
@@ -36,10 +37,12 @@ class RescuePrizeImpl extends RescuePrize {
     }
 
     var result = await _repository.makeRescue(
-        idPrize: idPrize,
-        quantity: quantity,
-        appId: response.first!,
-        tokenCliente: response.last!);
+      idPrize: idPrize,
+      quantity: quantity,
+      appId: response.first!,
+      tokenCliente: response.last!,
+      deliveryAddressId: deliveryAddressId,
+    );
 
     return result;
   }

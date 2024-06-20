@@ -150,3 +150,9 @@
 
 ## 1.0.49
 * Adicionando mais campos na request de premios. 
+
+## 1.0.50
+* Adicionando mais campos na response de users. 
+
+## 1.0.51
+* Adicionando mais campos na request de resgate. 

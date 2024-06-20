@@ -43,6 +43,7 @@ class User {
   String? filial;
   String? senha;
   String? confirmacaoSenha;
+  dynamic enderecoEntregaPadrao;
   Categoria? categoria;
   CamposAdicionais? camposAdicionais = CamposAdicionais();
 
@@ -108,6 +109,7 @@ class User {
     rendaMensal = json['renda_mensal'];
     tipoDeCliente = json['tipo_de_cliente'];
     filial = json['filial'];
+    enderecoEntregaPadrao = json['endereco_entrega_padrao'];
     categoria = json['categoria'] != null
         ? Categoria.fromJson(json['categoria'])
         : null;
