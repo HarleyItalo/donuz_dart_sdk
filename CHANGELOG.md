@@ -156,3 +156,6 @@
 
 ## 1.0.51
 * Adicionando mais campos na request de resgate. 
+
+## 1.0.52
+* Adicionando mais campos na request de resgatados. 

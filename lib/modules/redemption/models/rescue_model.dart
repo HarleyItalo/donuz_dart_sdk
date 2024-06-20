@@ -45,6 +45,18 @@ class Rescue {
   String? primeiroNome;
   String? cpf;
   String? foto;
+  dynamic enderecoEntregaId;
+  String? linkRastreio;
+  String? cep;
+  String? rua;
+  dynamic numero;
+  String? complemento;
+  String? bairro;
+  String? cidade;
+  String? estado;
+  String? pais;
+  String? pontoReferencia;
+  String? telefoneContato;
 
   Rescue.fromJson(Map<String, dynamic> json) {
     idPedido = json['id_pedido'];
@@ -71,5 +83,17 @@ class Rescue {
     primeiroNome = json['primeiro_nome'];
     cpf = json['cpf'];
     foto = json['foto'];
+    enderecoEntregaId = json['endereco_entrega_id'];
+    linkRastreio = json['link_rastreio'];
+    cep = json['cep'];
+    rua = json['rua'];
+    numero = json['numero'];
+    complemento = json['complemento'];
+    bairro = json['bairro'];
+    cidade = json['cidade'];
+    estado = json['estado'];
+    pais = json['pais'];
+    pontoReferencia = json['ponto_referencia'];
+    telefoneContato = json['telefone_contato'];
   }
 }
