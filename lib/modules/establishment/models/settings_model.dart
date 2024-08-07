@@ -87,6 +87,7 @@ class Configuracoes {
   bool? bloquearControleDuplicado;
   bool? appCartaoFidelidade;
   bool? habilitarInsercaoNfce;
+  bool? habilitarInsercaoNfe;
   dynamic quantidadeSelos;
   String? configuracaoAutomatica;
   bool? ranking;
@@ -188,6 +189,7 @@ class Configuracoes {
     documentoUsado = json['documento_usado'];
     ranking = json['ranking'];
     habilitarInsercaoNfce = json['habilitar_insercao_nfce'];
+    habilitarInsercaoNfe = json['habilitar_insercao_nfe'];
     if (json['campos_adicionais'] != null) {
       camposAdicionais = <CamposAdicionais>[];
       json['campos_adicionais'].forEach((v) {

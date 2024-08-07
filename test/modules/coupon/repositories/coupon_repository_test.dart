@@ -17,7 +17,7 @@ void main() {
     test("Deve retornar os status dos cupons", () async {
       when(
         () => httpServiceMock.get(
-          "${config.couponServer}/nfce/123",
+          "${config.integrationServer}/nfce/123",
           headers: {
             "estabelecimentoId": '2234',
             "token": config.donuzToken,
@@ -35,7 +35,7 @@ void main() {
     test("Deve enviar um cupom para validacao", () async {
       when(
         () => httpServiceMock.post(
-          "${config.couponServer}/nfce",
+          "${config.integrationServer}/nfce",
           {
             "url": 'http://url.com',
             "codigoCliente": '12345678909',

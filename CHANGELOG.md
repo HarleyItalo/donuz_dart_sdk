@@ -34,7 +34,6 @@
 ## 1.0.11
 * Corrigindo a conversão de string para double.
 
-
 ## 1.0.12
 * Melhorando a usabildade de alguns campos nulos.
 
@@ -127,7 +126,6 @@
 ## 1.0.42
 * Adicionado novos campos na requisicao de login.
 
-
 ## 1.0.43
 * Adicionado a request de busca de vouchers por id.
 
@@ -140,10 +138,8 @@
 ## 1.0.46
 * fix: corrigindo modelos e adicionando requests de busca de presentes por id.
 
-
 ## 1.0.47
 * fix: parametro opcional.
-
 
 ## 1.0.48
 * Adicionando as requests de endereco de entrega. 
@@ -159,3 +155,6 @@
 
 ## 1.0.52
 * Adicionando mais campos na request de resgatados. 
+
+## 1.0.53
+* Adicionando mais campos na request de settings e adicionando nova requisicao de criar nfe para processamento. 

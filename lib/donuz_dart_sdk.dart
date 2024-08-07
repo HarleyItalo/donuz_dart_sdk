@@ -6,6 +6,7 @@ import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
 import 'package:donuz_dart_sdk/modules/delivery_address/delivery_address_module.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 import 'package:donuz_dart_sdk/modules/gifts/gift_module.dart';
+import 'package:donuz_dart_sdk/modules/nfe/nfe_module.dart';
 import 'package:donuz_dart_sdk/modules/pdv/pdv_module.dart';
 import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
 import 'package:donuz_dart_sdk/modules/redemption/redemption_module.dart';
@@ -30,6 +31,7 @@ class DonuzSDK {
   late AppModule app;
   late PdvModule pdv;
   late DeliveryAddressModule deliveryAddres;
+  late NfeModule nfeModule;
 
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
@@ -46,6 +48,7 @@ class DonuzSDK {
     app = AppModule(instance: _serviceLocator);
     pdv = PdvModule(instance: _serviceLocator);
     deliveryAddres = DeliveryAddressModule(instance: _serviceLocator);
+    nfeModule = NfeModule(instance: _serviceLocator);
   }
   init() async {
     await Future.wait(

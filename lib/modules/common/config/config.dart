@@ -3,7 +3,7 @@ abstract class BaseConfig {
   final String donuzToken;
   BaseConfig(this.appId, this.donuzToken);
   final String donuzApi = "https://app.donuz.co/api/";
-  final String couponServer = "https://integration.donuz.co/";
+  final String integrationServer = "https://integration.donuz.co/";
 }
 
 class DonuzConfig extends BaseConfig {
