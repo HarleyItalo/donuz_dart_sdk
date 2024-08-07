@@ -161,3 +161,6 @@
 
 ## 1.0.54
 * Password validate 
+
+## 1.0.55
+* Fix Url Integration Server 
