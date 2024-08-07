@@ -31,7 +31,7 @@ class DonuzSDK {
   late AppModule app;
   late PdvModule pdv;
   late DeliveryAddressModule deliveryAddres;
-  late NfeModule nfeModule;
+  late NfeModule nfe;
 
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     client ??= http.Client();
@@ -48,7 +48,7 @@ class DonuzSDK {
     app = AppModule(instance: _serviceLocator);
     pdv = PdvModule(instance: _serviceLocator);
     deliveryAddres = DeliveryAddressModule(instance: _serviceLocator);
-    nfeModule = NfeModule(instance: _serviceLocator);
+    nfe = NfeModule(instance: _serviceLocator);
   }
   init() async {
     await Future.wait(
