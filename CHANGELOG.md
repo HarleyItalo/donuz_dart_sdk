@@ -164,3 +164,6 @@
 
 ## 1.0.55
 * Fix Url Integration Server 
+
+## 1.0.56
+* Fix Module name.
