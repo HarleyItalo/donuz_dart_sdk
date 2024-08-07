@@ -5,8 +5,7 @@ import 'package:donuz_dart_sdk/modules/nfe/models/action_model.dart';
 import 'package:donuz_dart_sdk/modules/nfe/repositories/nfe_repository_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-
-import '../../../json/coupon/coupon_json.dart';
+import '../../../json/default_response_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 void main() {
@@ -25,7 +24,7 @@ void main() {
             actionModel.toJson(),
             appId: "2234"),
       ).thenAnswer(
-        (_) async => jsonDecode(couponJson),
+        (_) async => jsonDecode(defaultResponseIntegrationServerJson),
       );
 
       var response = await repository.sendNfe(action: actionModel);

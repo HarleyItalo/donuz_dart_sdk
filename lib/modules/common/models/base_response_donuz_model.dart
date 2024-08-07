@@ -5,7 +5,7 @@ class BaseResponseDonuzModel {
   BaseResponseDonuzModel({this.status, this.mensagem});
 
   BaseResponseDonuzModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    mensagem = json['mensagem'];
+    status = json['status'] ?? json['statusCode'];
+    mensagem = json['mensagem'] ?? json['message'];
   }
 }
