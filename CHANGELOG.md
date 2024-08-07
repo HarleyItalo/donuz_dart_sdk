@@ -158,3 +158,6 @@
 
 ## 1.0.53
 * Adicionando mais campos na request de settings e adicionando nova requisicao de criar nfe para processamento. 
+
+## 1.0.54
+* Password validate 
