@@ -167,3 +167,6 @@
 
 ## 1.0.56
 * Fix Module name.
+
+## 1.0.57
+* Urls customizadas.

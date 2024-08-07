@@ -20,7 +20,11 @@ class HttpService {
   }) async {
     try {
       final response = await _client.get(
-        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        Uri.parse(
+          useDonuzToken && !url.contains("https://")
+              ? config.donuzApi + url
+              : url,
+        ),
         headers: getHeaders(
           useDonuzToken: useDonuzToken,
           appId: appId,
@@ -28,6 +32,7 @@ class HttpService {
           headers: headers,
         ),
       );
+
       return jsonDecode(response.body);
     } on Exception {
       return <String, dynamic>{};
@@ -45,7 +50,11 @@ class HttpService {
     try {
       body = removeNullValues(body);
       final response = await _client.post(
-        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        Uri.parse(
+          useDonuzToken && !url.contains("https://")
+              ? config.donuzApi + url
+              : url,
+        ),
         body: jsonEncode(body),
         headers: getHeaders(
           useDonuzToken: useDonuzToken,
@@ -54,6 +63,7 @@ class HttpService {
           headers: headers,
         ),
       );
+
       return jsonDecode(response.body);
     } on Exception {
       return <String, dynamic>{};
@@ -71,7 +81,11 @@ class HttpService {
     try {
       body = removeNullValues(body);
       final response = await _client.put(
-        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        Uri.parse(
+          useDonuzToken && !url.contains("https://")
+              ? config.donuzApi + url
+              : url,
+        ),
         body: jsonEncode(body),
         headers: getHeaders(
           useDonuzToken: useDonuzToken,
@@ -80,6 +94,7 @@ class HttpService {
           headers: headers,
         ),
       );
+
       return jsonDecode(response.body);
     } on Exception {
       return <String, dynamic>{};
@@ -95,7 +110,11 @@ class HttpService {
   }) async {
     try {
       final response = await _client.delete(
-        Uri.parse(useDonuzToken ? config.donuzApi + url : url),
+        Uri.parse(
+          useDonuzToken && !url.contains("https://")
+              ? config.donuzApi + url
+              : url,
+        ),
         headers: getHeaders(
           useDonuzToken: useDonuzToken,
           appId: appId,
@@ -103,6 +122,7 @@ class HttpService {
           headers: headers,
         ),
       );
+
       return jsonDecode(response.body);
     } on Exception {
       return <String, dynamic>{};
@@ -138,6 +158,7 @@ class HttpService {
       request.fields.addAll({'cliente': 'true'});
       var responseStream = await _client.send(request);
       var result = await http.Response.fromStream(responseStream);
+
       return jsonDecode(result.body);
     } on Exception {
       return <String, dynamic>{};
@@ -155,6 +176,7 @@ class HttpService {
     if (null != appId) headers['estabelecimento'] = appId;
     if (null != tokenCliente) headers["token-cliente"] = tokenCliente;
     headers['content-type'] = 'application/json';
+
     return headers;
   }
 
@@ -162,6 +184,7 @@ class HttpService {
     data.removeWhere(
       (i, j) => j == null,
     );
+
     return data;
   }
 }
