@@ -170,3 +170,6 @@
 
 ## 1.0.57
 * Urls customizadas.
+
+## 1.0.59
+* Urls customizadas.
