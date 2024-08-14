@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:donuz_dart_sdk/modules/common/config/config.dart';
 import 'package:donuz_dart_sdk/modules/nfe/models/action_model.dart';
+import 'package:donuz_dart_sdk/modules/nfe/models/nfe_status_result_model.dart';
 import 'package:donuz_dart_sdk/modules/nfe/repositories/nfe_repository_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import '../../../json/default_response_json.dart';
+import '../../../json/nfe/get_nfe_status_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 void main() {
@@ -31,6 +33,21 @@ void main() {
 
       expect(response, isNotNull);
       expect(response, isA<(bool, String?)>());
+    });
+    test("Deve retornar o historico de NFE", () async {
+      when(
+        () => httpServiceMock.get(
+            "${config.integrationServer}/api/actions/nfe/status/person/12345678909",
+            appId: "2234"),
+      ).thenAnswer(
+        (_) async => jsonDecode(getNfeStatusJson),
+      );
+
+      var response = await repository.getNfeActionResult(
+          establismentId: "2234", cpf: '12345678909');
+
+      expect(response, isNotNull);
+      expect(response, isA<NfeStatusResultModel>());
     });
   });
 }

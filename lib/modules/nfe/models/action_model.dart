@@ -1,3 +1,5 @@
+import 'package:donuz_dart_sdk/modules/nfe/models/nfe_status_result_model.dart';
+
 class ActionModel {
   int? establishmentId;
   String? onAction = 'nfe';
@@ -15,20 +17,6 @@ class ActionModel {
     data['onAction'] = onAction;
     data['actionParamms'] = actionParamms.toJson();
 
-    return data;
-  }
-}
-
-class ActionParamms {
-  late String nfeAccessKey;
-  late String cpf;
-
-  ActionParamms({required this.nfeAccessKey, required this.cpf});
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['nfeAccessKey'] = nfeAccessKey;
-    data['cpf'] = cpf;
     return data;
   }
 }

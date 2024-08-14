@@ -50,5 +50,17 @@ void main() {
       );
       expect(response, 0.0);
     });
+    test("Validate password", () {
+      var response = StringUtil.validatePassword(
+        "x",
+      );
+      expect(response, false);
+    });
+    test("Validate password", () {
+      var response = StringUtil.validatePassword(
+        "Teste131*",
+      );
+      expect(response, true);
+    });
   });
 }

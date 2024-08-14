@@ -3,8 +3,6 @@ class BranchUserModel {
   String? mensagem;
   UsuarioFilial? usuarioFilial;
 
-  BranchUserModel({this.status, this.mensagem, this.usuarioFilial});
-
   BranchUserModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     mensagem = json['mensagem'];
@@ -22,14 +20,6 @@ class UsuarioFilial {
   String? login;
   int? estabelecimentoId;
   String? codigo;
-
-  UsuarioFilial(
-      {this.idLoginFilial,
-      this.usuario,
-      this.email,
-      this.login,
-      this.estabelecimentoId,
-      this.codigo});
 
   UsuarioFilial.fromJson(Map<String, dynamic> json) {
     idLoginFilial = json['id_login_filial'];

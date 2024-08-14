@@ -173,3 +173,6 @@
 
 ## 1.0.59
 * Urls customizadas.
+
+## 1.0.60
+* Adicionando request para buscar os status das nfe's  
