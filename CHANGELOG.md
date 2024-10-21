@@ -179,3 +179,6 @@
 
 ## 1.0.61
 * Strings de password sem obrigação de ter letras maiusculas.
+
+## 1.0.62
+* Corrigindo o caminho da url de transferencia de pontos.
