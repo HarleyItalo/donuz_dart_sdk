@@ -1,5 +1,3 @@
-library donuz_dart_sdk;
-
 import 'package:donuz_dart_sdk/modules/app/app_module.dart';
 import 'package:donuz_dart_sdk/modules/contact/contact_module.dart';
 import 'package:donuz_dart_sdk/modules/coupon/coupon_module.dart';
