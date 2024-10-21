@@ -159,7 +159,7 @@ class PointsRepositoryImpl extends PointsRepository {
     required String appId,
   }) async {
     var response = await httpService.post(
-      '/points/donate',
+      'points/donate',
       {
         "valor": value,
         "cpf": destination,
