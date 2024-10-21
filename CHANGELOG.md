@@ -176,3 +176,6 @@
 
 ## 1.0.60
 * Adicionando request para buscar os status das nfe's  
+
+## 1.0.61
+* Strings de password sem obrigação de ter letras maiusculas.
