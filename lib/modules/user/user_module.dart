@@ -23,6 +23,7 @@ export 'usercases/get_user_notifications.dart';
 export 'usercases/mark_as_read_notification.dart';
 export 'usercases/send_sms_before_registration.dart';
 export 'usercases/update_notification_token.dart';
+import 'usercases/make_login_only_key.dart';
 export 'usercases/upload_user_photo.dart';
 import 'user_module.dart';
 
@@ -42,6 +43,7 @@ class UserModule extends BaseModule {
   late UpdateNotificationToken updateNotificationToken;
   late UploadUserPhoto uploadUserPhoto;
   late GetLoggedUserId getLoggedUserId;
+  late MakeLoginOnlyKey makeLoginOnlyKey;
 
   @override
   Future init() async {
@@ -59,6 +61,7 @@ class UserModule extends BaseModule {
     updateNotificationToken = await instance.getAsync();
     uploadUserPhoto = await instance.getAsync();
     getLoggedUserId = await instance.getAsync();
+    makeLoginOnlyKey = await instance.getAsync();
   }
 
   @override
@@ -157,6 +160,12 @@ class UserModule extends BaseModule {
     instance.registerLazySingletonAsync<UploadUserPhoto>(
       () async => UploadUserPhotoImpl(
         await instance.getAsync(),
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<MakeLoginOnlyKey>(
+      () async => MakeLoginOnlyKeyImpl(
         await instance.getAsync(),
         await instance.getAsync(),
       ),

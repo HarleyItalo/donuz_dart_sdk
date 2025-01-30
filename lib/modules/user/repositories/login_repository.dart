@@ -15,6 +15,11 @@ abstract class LoginRepository {
     required String appId,
   });
   Future<bool> makeLogout();
+  Future<LoginModel?> makeLoginOnlyKey({
+    required String key,
+    required String appId,
+    String? playerId,
+  });
 }
 
 class LoginRepositoryImpl extends LoginRepository {
@@ -67,6 +72,27 @@ class LoginRepositoryImpl extends LoginRepository {
         await httpService.post("clients/forgotPassword", body, appId: appId);
     var response = BaseResponseDonuzModel.fromJson(result);
     return response.mensagem;
+  }
+
+  @override
+  Future<LoginModel?> makeLoginOnlyKey({
+    required String key,
+    required String appId,
+    String? playerId,
+  }) async {
+    var body = <String, dynamic>{};
+    body['login'] = key;
+    body['player_id'] = playerId;
+    var result =
+        await httpService.post("/clients/loginOnlyEmail", body, appId: appId);
+    var login = LoginModel.fromJson(result);
+    if (login.status != 200) {
+      return null;
+    }
+    storageService.setData(clientIdKey, login.cliente.toString(),
+        serialize: false);
+    storageService.setData(loginTokenKey, login.token, serialize: false);
+    return login;
   }
 
   @override

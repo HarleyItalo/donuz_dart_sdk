@@ -129,7 +129,7 @@ main() {
       'Deve fazer uma transferência',
       () async {
         when(() => httpServiceMock.post(
-              '/points/donate',
+              'points/donate',
               {
                 "valor": 10,
                 "cpf": '12345678909',

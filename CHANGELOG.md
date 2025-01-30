@@ -182,3 +182,6 @@
 
 ## 1.0.62
 * Corrigindo o caminho da url de transferencia de pontos.
+
+## 1.0.63
+* Adiconando o login por chave dinamica.
