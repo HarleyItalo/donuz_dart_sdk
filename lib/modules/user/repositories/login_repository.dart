@@ -84,7 +84,7 @@ class LoginRepositoryImpl extends LoginRepository {
     body['login'] = key;
     body['player_id'] = playerId;
     var result =
-        await httpService.post("/clients/loginOnlyEmail", body, appId: appId);
+        await httpService.post("clients/loginOnlyEmail", body, appId: appId);
     var login = LoginModel.fromJson(result);
     if (login.status != 200) {
       return null;

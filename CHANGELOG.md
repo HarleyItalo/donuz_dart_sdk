@@ -185,3 +185,6 @@
 
 ## 1.0.63
 * Adiconando o login por chave dinamica.
+
+## 1.0.64
+* Corrigindo path da url.

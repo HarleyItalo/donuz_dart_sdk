@@ -10,6 +10,7 @@ import 'package:donuz_dart_sdk/modules/prizes/prizes_module.dart';
 import 'package:donuz_dart_sdk/modules/redemption/redemption_module.dart';
 import 'package:donuz_dart_sdk/modules/user/user_module.dart';
 import 'package:donuz_dart_sdk/modules/wallet/wallet_module.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 
@@ -32,6 +33,7 @@ class DonuzSDK {
   late NfeModule nfe;
 
   DonuzSDK({required BaseConfig config, http.Client? client}) {
+    WidgetsFlutterBinding.ensureInitialized();
     client ??= http.Client();
     CommomModule(_serviceLocator, config, client);
     establisment = EstablismentModule(instance: _serviceLocator);
