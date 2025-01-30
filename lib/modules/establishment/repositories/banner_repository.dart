@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../common/common_module.dart';
 import '../establishment_module.dart';
 
@@ -18,7 +20,9 @@ class BannerRepositoryImpl extends BannerRepository {
     var json = await _storageService.getDataTimmed("$bannersStoreKey-$appId");
     json ??= await httpService.get("estabelishments/banners", appId: appId);
     var response = BannerModel.fromJson(json).banners;
-
+    if (kIsWeb) {
+      return response;
+    }
     _storageService.setDataTimmed("$bannersStoreKey-$appId", response);
     return response;
   }

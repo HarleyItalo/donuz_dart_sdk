@@ -188,3 +188,7 @@
 
 ## 1.0.64
 * Corrigindo path da url.
+
+## 1.0.65
+* Ignorando cache na web.
+
