@@ -7,6 +7,7 @@ export 'models/establishment_model.dart';
 export 'models/settings_model.dart';
 export 'models/branchs_model.dart';
 export 'models/admin_model.dart';
+export 'models/hired_resources_model.dart';
 // repositories
 export 'repositories/banner_repository.dart';
 export 'repositories/establishment_repository.dart';
@@ -27,7 +28,9 @@ export 'usercases/establishment_login.dart';
 export 'usercases/dashboard_statistics.dart';
 
 import 'package:donuz_dart_sdk/modules/base_module.dart';
+import 'package:donuz_dart_sdk/modules/establishment/repositories/resources_repository.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/get_custom_config.dart';
+import 'package:donuz_dart_sdk/modules/establishment/usercases/get_hired_resources.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/locate_branch_with_code.dart';
 import 'package:donuz_dart_sdk/modules/establishment/usercases/set_custom_config.dart';
 import 'establishment_module.dart';
@@ -47,6 +50,7 @@ class EstablismentModule extends BaseModule {
   late LocateBranchWithCode locateBranchWithCode;
   late SetCustomConfig setCustomConfig;
   late GetCustomConfig getCustomConfig;
+  late GetHiredResources getHiredResources;
 
   EstablismentModule({required super.instance});
 
@@ -77,6 +81,11 @@ class EstablismentModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<BranchRepository>(
       () async => BranchRepositoryImpl(
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<ResourcesRepository>(
+      () async => ResourcesRepositoryImpl(
         await instance.getAsync(),
       ),
     );
@@ -162,6 +171,12 @@ class EstablismentModule extends BaseModule {
         await instance.getAsync(),
       ),
     );
+    instance.registerLazySingletonAsync<GetHiredResources>(
+      () async => GetHiredResourcesImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
   }
 
   @override
@@ -180,5 +195,6 @@ class EstablismentModule extends BaseModule {
     locateBranchWithCode = await instance.getAsync();
     getCustomConfig = await instance.getAsync();
     setCustomConfig = await instance.getAsync();
+    getHiredResources = await instance.getAsync();
   }
 }
