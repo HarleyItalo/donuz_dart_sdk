@@ -192,3 +192,6 @@
 ## 1.0.65
 * Ignorando cache na web.
 
+## 1.0.66
+* Adicionando request de recursos
+
