@@ -198,3 +198,6 @@
 ## 1.0.67
 * Adicionando request de ranking individual
 
+## 1.0.68
+* fix conversao de valor.
+
