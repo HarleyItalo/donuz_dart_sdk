@@ -11,6 +11,7 @@ import '../../../json/wallet/extract_json.dart';
 import '../../../json/wallet/punctuable_code_json.dart';
 import '../../../json/wallet/ranking_json.dart';
 import '../../../json/wallet/rules_json.dart';
+import '../../../json/wallet/single_ranking_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
 main() {
@@ -122,6 +123,19 @@ main() {
         var response = await repository.findRanking(
           appId: '2234',
         );
+        expect(response.status, 200);
+      },
+    );
+
+    test(
+      'Deve buscar o ranking de um usuario',
+      () async {
+        when(() => httpServiceMock.get('points/ranking/123', appId: "2234"))
+            .thenAnswer(
+          (_) async => jsonDecode(singleRankingJson),
+        );
+        var response =
+            await repository.findSingleRanking(appId: '2234', personId: "123");
         expect(response.status, 200);
       },
     );

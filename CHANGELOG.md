@@ -195,3 +195,6 @@
 ## 1.0.66
 * Adicionando request de recursos
 
+## 1.0.67
+* Adicionando request de ranking individual
+

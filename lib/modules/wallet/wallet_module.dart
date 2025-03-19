@@ -18,6 +18,8 @@ export 'usercases/transfer.dart';
 export 'usercases/find_ranking.dart';
 export 'usercases/get_balance_by_id.dart';
 
+import 'package:donuz_dart_sdk/modules/wallet/usercases/find_single_ranking.dart';
+
 import 'wallet_module.dart';
 
 class WalletModule extends BaseModule {
@@ -31,6 +33,7 @@ class WalletModule extends BaseModule {
   late Transfer tranfer;
   late GetBalanceById getBalanceById;
   late GetPointsRule getPointsRule;
+  late FindSingleRanking findSingleRanking;
 
   @override
   Future init() async {
@@ -43,6 +46,7 @@ class WalletModule extends BaseModule {
     tranfer = await instance.getAsync();
     getBalanceById = await instance.getAsync();
     getPointsRule = await instance.getAsync();
+    findSingleRanking = await instance.getAsync();
   }
 
   @override
@@ -107,6 +111,13 @@ class WalletModule extends BaseModule {
     );
     instance.registerLazySingletonAsync<GetPointsRule>(
       () async => GetPointsRuleImpl(
+        await instance.getAsync(),
+        await instance.getAsync(),
+      ),
+    );
+    instance.registerLazySingletonAsync<FindSingleRanking>(
+      () async => FindSingleRankingImpl(
+        await instance.getAsync(),
         await instance.getAsync(),
         await instance.getAsync(),
       ),

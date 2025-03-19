@@ -1,3 +1,5 @@
+import 'package:donuz_dart_sdk/modules/wallet/models/single_ranking_model.dart';
+
 import '../../common/common_module.dart';
 import '../wallet_module.dart';
 
@@ -41,6 +43,10 @@ abstract class PointsRepository {
   });
   Future<RankingModel> findRanking({
     required String appId,
+  });
+  Future<SingleRankingModel> findSingleRanking({
+    required String appId,
+    required String personId,
   });
   Future<PointsRulesModel> getPointsRule({
     required String appId,
@@ -184,5 +190,15 @@ class PointsRepositoryImpl extends PointsRepository {
       appId: appId,
     );
     return BalanceModel.fromJson(result);
+  }
+
+  @override
+  Future<SingleRankingModel> findSingleRanking(
+      {required String appId, required String personId}) async {
+    var response = await httpService.get(
+      'points/ranking/$personId',
+      appId: appId,
+    );
+    return SingleRankingModel.fromJson(response);
   }
 }
