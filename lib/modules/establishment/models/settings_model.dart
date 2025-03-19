@@ -92,6 +92,7 @@ class Configuracoes {
   String? configuracaoAutomatica;
   bool? ranking;
   String? documentoUsado;
+  bool? exibirPontuacaoAcumuladaRanking;
   List<CamposAdicionais>? camposAdicionais;
 
   Configuracoes.fromJson(Map<String, dynamic> json) {
@@ -190,6 +191,8 @@ class Configuracoes {
     ranking = json['ranking'];
     habilitarInsercaoNfce = json['habilitar_insercao_nfce'];
     habilitarInsercaoNfe = json['habilitar_insercao_nfe'];
+    exibirPontuacaoAcumuladaRanking =
+        json['exibir_pontuacao_acumulada_ranking'];
     if (json['campos_adicionais'] != null) {
       camposAdicionais = <CamposAdicionais>[];
       json['campos_adicionais'].forEach((v) {
