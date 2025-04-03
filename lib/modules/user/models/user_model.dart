@@ -45,6 +45,7 @@ class User {
   String? confirmacaoSenha;
   dynamic enderecoEntregaPadrao;
   Categoria? categoria;
+  String? ultimoLogin;
   CamposAdicionais? camposAdicionais = CamposAdicionais();
 
   User(
@@ -109,6 +110,7 @@ class User {
     rendaMensal = json['renda_mensal'];
     tipoDeCliente = json['tipo_de_cliente'];
     filial = json['filial'];
+    ultimoLogin = json['ultimo_login'];
     enderecoEntregaPadrao = json['endereco_entrega_padrao'];
     categoria = json['categoria'] != null
         ? Categoria.fromJson(json['categoria'])

@@ -201,3 +201,5 @@
 ## 1.0.68
 * fix conversao de valor.
 
+## 1.0.69
+* Mostrando novos campos.

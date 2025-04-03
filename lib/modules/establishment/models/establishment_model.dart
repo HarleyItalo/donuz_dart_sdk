@@ -34,6 +34,7 @@ class Estabelecimento {
   int? idUsuario;
   String? nome;
   String? gmEnderecoCompleto;
+  String? dataAtualizacaoRegulamento;
 
   Estabelecimento.fromJson(Map<String, dynamic> json) {
     idAdmin = json['id_admin'];
@@ -51,5 +52,6 @@ class Estabelecimento {
     idFilial = json['id_filial'];
     idUsuario = json['id_usuario'];
     nome = json['nome'];
+    dataAtualizacaoRegulamento = json['data_atualizacao_regulamento'];
   }
 }
