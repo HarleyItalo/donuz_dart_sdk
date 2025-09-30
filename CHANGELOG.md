@@ -207,3 +207,6 @@
 
 ## 1.0.70
 * Mostrando novos campos.
+
+## 1.0.71
+* Filtro de filial em premios

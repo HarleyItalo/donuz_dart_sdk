@@ -2,7 +2,7 @@ import '../../establishment/establishment_module.dart';
 import '../prizes_module.dart';
 
 abstract class GetPrizes {
-  Future<List<Prize>?> call();
+  Future<List<Prize>?> call({String? filial});
 }
 
 class GetPrizesImpl implements GetPrizes {
@@ -10,10 +10,10 @@ class GetPrizesImpl implements GetPrizes {
   final FindEstablishmentById _findEstablishmentById;
   GetPrizesImpl(this._repository, this._findEstablishmentById);
   @override
-  Future<List<Prize>?> call() async {
+  Future<List<Prize>?> call({String? filial}) async {
     var establisment = await _findEstablishmentById.currentId();
     if (establisment == null) return null;
 
-    return await _repository.getPrizes(establisment);
+    return await _repository.getPrizes(establisment, filial: filial);
   }
 }

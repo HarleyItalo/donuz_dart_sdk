@@ -24,6 +24,19 @@ void main() async {
       expect(response, isNotEmpty);
     });
     test(
+        "Deve Buscar todos os premios de um estabelecimento com o filtro de filial",
+        () async {
+      when(() => prizesRepositoryMock.getPrizes("2234", filial: '123'))
+          .thenAnswer((_) async =>
+              PrizesModel.fromJson(jsonDecode(prizesJson)).premios);
+      when(() => findEstablismentByIdMock.currentId())
+          .thenAnswer((_) async => "2234");
+
+      var response = await getPrizes(filial: '123');
+      expect(response, isNotNull);
+      expect(response, isNotEmpty);
+    });
+    test(
         "Deve retornar uma lista vazia de premios quando o estabelecimento for nulo",
         () async {
       when(() => findEstablismentByIdMock.currentId())
