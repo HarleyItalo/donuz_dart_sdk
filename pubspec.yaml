@@ -3,7 +3,7 @@ description: Donuz Dart SDK to comunicate with Donuz API, Abstracting Logics of 
 version: 1.0.71
 homepage: https://github.com/HarleyItalo/donuz_dart_sdk
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
