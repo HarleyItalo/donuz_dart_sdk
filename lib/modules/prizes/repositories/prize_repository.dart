@@ -19,7 +19,7 @@ class PrizeRepositoryImpl extends PrizeRepository {
   Future<List<Prize>?> getPrizes(String appId, {String? filial}) async {
     if (filial != null) {
       var response =
-          await httpService.post("prizes", {filial: filial}, appId: appId);
+          await httpService.post("prizes", {"filial": filial}, appId: appId);
       return PrizesModel.fromJson(response).premios;
     }
     var response = await httpService.get("prizes", appId: appId);
