@@ -50,7 +50,7 @@ class DonuzSDK {
     deliveryAddres = DeliveryAddressModule(instance: _serviceLocator);
     nfe = NfeModule(instance: _serviceLocator);
   }
-  init() async {
+  Future init() async {
     await Future.wait(
       [
         establisment.init(),

@@ -204,9 +204,11 @@
 ## 1.0.69
 * Mostrando novos campos.
 
-
 ## 1.0.70
 * Mostrando novos campos.
 
 ## 1.0.71
 * Filtro de filial em premios
+
+## 1.0.72
+* Fix: Filtro de filial em premios 

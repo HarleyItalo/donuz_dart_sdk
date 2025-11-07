@@ -12,7 +12,7 @@ import '../../../mocks/establishment/usercases/find_establishment_by_id_mock.dar
 import '../../../mocks/redemption/repositories/rescue_repository_mock.dart';
 import '../../../mocks/user/user_cases/get_logged_user_token_mock.dart';
 
-main() {
+void main() {
   final FindEstablishmentById findEstablishmentByIdMock =
       FindEstablismentByIdMock();
   final GetLoggedUserToken getLoggedUserTokenMock = GetLoggedUserTokenMock();

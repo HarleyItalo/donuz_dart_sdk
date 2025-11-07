@@ -9,7 +9,7 @@ import '../../../json/redemptions/rescue_json.dart';
 import '../../../mocks/establishment/usercases/find_establishment_by_id_mock.dart';
 import '../../../mocks/redemption/repositories/rescue_repository_mock.dart';
 
-main() {
+void main() {
   final FindEstablishmentById findEstablishmentByIdMock =
       FindEstablismentByIdMock();
   final RescueRepository repositoryMock = RescueRepositoryMock();

@@ -11,7 +11,7 @@ class StorageService {
     return await instance.setString(key, value);
   }
 
-  Future<Map<String, dynamic>?> getData(key) async {
+  Future<Map<String, dynamic>?> getData(String key) async {
     var result = instance.getString(key);
     if (result == null) {
       return null;
@@ -32,7 +32,7 @@ class StorageService {
     return instance.getBool(key) ?? false;
   }
 
-  Future<String?> getString(key) async {
+  Future<String?> getString(String key) async {
     var result = instance.getString(key);
     return result;
   }
@@ -50,7 +50,7 @@ class StorageService {
     return response;
   }
 
-  Future<Map<String, dynamic>?> getDataTimmed(key) async {
+  Future<Map<String, dynamic>?> getDataTimmed(String key) async {
     try {
       var keyTimmed = "$key-timmed";
       if (!await existsKey(keyTimmed)) {
@@ -73,7 +73,7 @@ class StorageService {
     }
   }
 
-  Future<String?> getStringTimmed(key) async {
+  Future<String?> getStringTimmed(String key) async {
     var keyTimmed = "$key-timmed";
     if (!await existsKey(keyTimmed)) {
       return null;
@@ -91,11 +91,11 @@ class StorageService {
     return responseData;
   }
 
-  Future<bool> existsKey(key) async {
+  Future<bool> existsKey(String key) async {
     return instance.containsKey(key);
   }
 
-  Future<bool> dropKey(key) async {
+  Future<bool> dropKey(String key) async {
     return await instance.remove(key);
   }
 

@@ -7,5 +7,6 @@ abstract class BaseConfig {
 }
 
 class DonuzConfig extends BaseConfig {
-  DonuzConfig({required appId, required donuzToken}) : super(appId, donuzToken);
+  DonuzConfig({required String appId, required String donuzToken})
+      : super(appId, donuzToken);
 }

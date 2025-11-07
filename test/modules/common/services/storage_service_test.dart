@@ -2,7 +2,7 @@ import 'package:donuz_dart_sdk/modules/common/common_module.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-main() async {
+void main() async {
   SharedPreferences.setMockInitialValues({});
   final storageService = StorageService(await SharedPreferences.getInstance());
   group("StorageService Tests", () {

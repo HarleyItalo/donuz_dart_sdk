@@ -14,7 +14,7 @@ import '../../../json/wallet/rules_json.dart';
 import '../../../json/wallet/single_ranking_json.dart';
 import '../../../mocks/common/services/http_service_mock.dart';
 
-main() {
+void main() {
   final httpServiceMock = HttpServiceMock();
   final repository = PointsRepositoryImpl(httpServiceMock);
   group("PointsRepository", () {

@@ -8,7 +8,7 @@ import '../../../json/redemptions/redemptions_json.dart';
 
 import '../../../mocks/redemption/usercases/get_all_rescues_mock.dart';
 
-main() {
+void main() {
   final getAllRescuesMock = GetAllRescuesMock();
   final GetAvaliableVouchers getAvaliableVouchers =
       GetAvaliableVouchersImpl(getAllRescuesMock);

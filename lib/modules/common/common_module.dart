@@ -18,7 +18,8 @@ export 'package:get_it/get_it.dart';
 import 'common_module.dart';
 
 class CommomModule extends BaseModule {
-  CommomModule(instance, this.config, this.client) : super(instance: instance);
+  CommomModule(GetIt instance, this.config, this.client)
+      : super(instance: instance);
   final BaseConfig config;
   final http.Client client;
 
