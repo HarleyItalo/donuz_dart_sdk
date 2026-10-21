@@ -30,7 +30,7 @@ void main() async {
       });
       var response = await loginRepository.makeLogin(
           appId: "2234", username: 'teste', password: 'teste123');
-      expect(response, isNull);
+      expect(response?.status, isNot(200));
     });
     test("Deve ter sucesso ao login", () async {
       when(() => httpService.post(

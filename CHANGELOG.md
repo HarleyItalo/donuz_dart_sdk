@@ -212,3 +212,6 @@
 
 ## 1.0.72
 * Fix: Filtro de filial em premios 
+
+## 1.0.73
+* Fix: Retornando messagem de erro.

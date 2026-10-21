@@ -1,6 +1,7 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/harleyitalo/fvm/caches/stable
+FLUTTER_ROOT=/Users/harleyitalo/fvm/versions/stable
 FLUTTER_APPLICATION_PATH=/Users/harleyitalo/src/DonuzPlatform/donuz_dart_sdk
+FLUTTER_FRAMEWORK_SWIFT_PACKAGE_PATH=/Users/harleyitalo/src/DonuzPlatform/donuz_dart_sdk/macos/Flutter/ephemeral/Packages/.packages/FlutterFramework
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.72

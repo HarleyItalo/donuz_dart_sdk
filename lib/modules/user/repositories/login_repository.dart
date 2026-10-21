@@ -53,7 +53,7 @@ class LoginRepositoryImpl extends LoginRepository {
     );
     var login = LoginModel.fromJson(json);
     if (login.status != 200) {
-      return null;
+      return login;
     }
     storageService.setData(clientIdKey, login.cliente.toString(),
         serialize: false);
