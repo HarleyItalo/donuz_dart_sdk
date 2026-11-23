@@ -1,5 +1,5 @@
 abstract class BaseConfig {
-  final String? appId;
+  String? appId;
   String donuzToken;
   BaseConfig(this.appId, this.donuzToken);
   final String donuzApi = "https://app.donuz.co/api/";

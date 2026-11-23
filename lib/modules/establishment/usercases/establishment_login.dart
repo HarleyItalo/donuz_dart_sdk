@@ -24,6 +24,7 @@ class EstablismentLoginImpl extends EstablismentLogin {
     var response = await _repository.login(username, password);
     if (response.token != null && response.token!.isNotEmpty) {
       config.donuzToken = response.token!;
+      config.appId = response.estabelecimento?.idAdmin.toString();
     }
     return response;
   }

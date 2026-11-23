@@ -219,3 +219,6 @@
 
 ## 1.0.74
 * Fix: Corrigindo o token das novas chamadas apos o login.
+
+## 1.0.75
+* Fix: Corrigindo o token das novas chamadas apos o login.
