@@ -1,7 +1,6 @@
 import 'package:donuz_dart_sdk/donuz_dart_sdk.dart';
 import 'package:donuz_dart_sdk/modules/common/common_module.dart';
-
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 late DonuzSDK donuzSDK;
 void main() async {

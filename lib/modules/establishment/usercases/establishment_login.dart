@@ -1,3 +1,4 @@
+import 'package:donuz_dart_sdk/modules/common/config/config.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 
 abstract class EstablismentLogin {
@@ -9,7 +10,8 @@ abstract class EstablismentLogin {
 
 class EstablismentLoginImpl extends EstablismentLogin {
   final EstablishimentRepository _repository;
-  EstablismentLoginImpl(this._repository);
+  final BaseConfig config;
+  EstablismentLoginImpl(this._repository, this.config);
 
   @override
   Future<AdminModel?> call({
@@ -19,6 +21,10 @@ class EstablismentLoginImpl extends EstablismentLogin {
     if (username.isEmpty || password.isEmpty) {
       return null;
     }
-    return await _repository.login(username, password);
+    var response = await _repository.login(username, password);
+    if (response.token != null && response.token!.isNotEmpty) {
+      config.donuzToken = response.token!;
+    }
+    return response;
   }
 }

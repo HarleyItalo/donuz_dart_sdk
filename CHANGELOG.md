@@ -215,3 +215,7 @@
 
 ## 1.0.73
 * Fix: Retornando messagem de erro.
+
+
+## 1.0.74
+* Fix: Corrigindo o token das novas chamadas apos o login.
