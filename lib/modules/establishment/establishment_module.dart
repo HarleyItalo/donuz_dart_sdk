@@ -146,6 +146,7 @@ class EstablismentModule extends BaseModule {
       () async => EstablismentLoginImpl(
         await instance.getAsync(),
         await instance.getAsync(),
+        await instance.getAsync(),
       ),
     );
     instance.registerLazySingletonAsync<DashboardStatistics>(

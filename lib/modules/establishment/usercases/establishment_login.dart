@@ -1,4 +1,5 @@
 import 'package:donuz_dart_sdk/modules/common/config/config.dart';
+import 'package:donuz_dart_sdk/modules/common/services/storage_service.dart';
 import 'package:donuz_dart_sdk/modules/establishment/establishment_module.dart';
 
 abstract class EstablismentLogin {
@@ -11,7 +12,8 @@ abstract class EstablismentLogin {
 class EstablismentLoginImpl extends EstablismentLogin {
   final EstablishimentRepository _repository;
   final BaseConfig config;
-  EstablismentLoginImpl(this._repository, this.config);
+  final StorageService storage;
+  EstablismentLoginImpl(this._repository, this.config, this.storage);
 
   @override
   Future<AdminModel?> call({
@@ -25,6 +27,11 @@ class EstablismentLoginImpl extends EstablismentLogin {
     if (response.token != null && response.token!.isNotEmpty) {
       config.donuzToken = response.token!;
       config.appId = response.estabelecimento?.idAdmin.toString();
+      await storage.setDataTimmed('donuzToken', response.token!,
+          time: Duration(days: 20));
+      await storage.setDataTimmed(
+          'appId', response.estabelecimento?.idAdmin.toString() ?? '',
+          time: Duration(days: 20));
     }
     return response;
   }

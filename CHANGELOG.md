@@ -222,3 +222,6 @@
 
 ## 1.0.75
 * Fix: Corrigindo o token das novas chamadas apos o login.
+
+## 1.0.76
+* Fix: Atualizando para usar o token do admin logado.

@@ -19,6 +19,7 @@ import 'modules/feedback/feedback_module.dart';
 class DonuzSDK {
   final _serviceLocator = GetIt.instance;
   late EstablismentModule establisment;
+  late CommomModule common;
   late UserModule user;
   late PrizeModule prizes;
   late WalletModule wallet;
@@ -35,7 +36,7 @@ class DonuzSDK {
   DonuzSDK({required BaseConfig config, http.Client? client}) {
     WidgetsFlutterBinding.ensureInitialized();
     client ??= http.Client();
-    CommomModule(_serviceLocator, config, client);
+    common = CommomModule(_serviceLocator, config, client);
     establisment = EstablismentModule(instance: _serviceLocator);
     user = UserModule(instance: _serviceLocator);
     prizes = PrizeModule(instance: _serviceLocator);
@@ -53,6 +54,7 @@ class DonuzSDK {
   Future init() async {
     await Future.wait(
       [
+        common.init(),
         establisment.init(),
         user.init(),
         user.init(),

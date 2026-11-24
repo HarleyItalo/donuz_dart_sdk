@@ -20,7 +20,7 @@ import 'common_module.dart';
 class CommomModule extends BaseModule {
   CommomModule(GetIt instance, this.config, this.client)
       : super(instance: instance);
-  final BaseConfig config;
+  BaseConfig config;
   final http.Client client;
 
   @override
@@ -37,5 +37,18 @@ class CommomModule extends BaseModule {
   }
 
   @override
-  Future init() async {}
+  Future init() async {
+    final StorageService storageService =
+        await instance.getAsync<StorageService>();
+    var token = await storageService.getStringTimmed('donuzToken');
+    var appId = await storageService.getStringTimmed('appId');
+
+    if (token != null &&
+        token.isNotEmpty &&
+        appId != null &&
+        appId.isNotEmpty) {
+      config.donuzToken = token;
+      config.appId = appId;
+    }
+  }
 }
